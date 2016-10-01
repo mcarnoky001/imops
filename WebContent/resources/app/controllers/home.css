@@ -1,0 +1,37 @@
+.home .logoImage {
+	display: block;
+	margin: auto;
+	width: 70%;
+	height: auto;
+	padding-top: 70px;
+	padding-bottom: 40px;
+}
+
+.home .searchTB {
+	width: 98%;
+	border-radius: 5px;
+}
+
+.home .or {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.home {
+	text-align: center;
+}
+
+.home {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.actionButton {
+	margin: 10px;
+}
+
+.home.mblButton {
+	disabled: false;
+}

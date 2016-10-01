@@ -1,0 +1,15 @@
+<div class="detailBody">
+	<div class="mblSimpleDialogTitle">${title}</div>
+	<input type="search" data-dojo-type="dojox/mobile/TextBox" data-dojo-attach-point="searchBox" class="mblSearchBox" data-dojo-props="intermediateChanges:true"
+		style="width: 100%; box-sizing: border-box;" />
+	<div data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="scrollWrapper">
+		<div class="pickerPane" data-dojo-attach-point="list" data-dojo-type="dojox/mobile/EdgeToEdgeStoreList" data-dojo-mixins="dojox/mobile/LongListMixin"
+			data-dojo-props="select:'single'"></div>
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="loadMoreBtn" data-dojo-props="hidden:true" class="loadMoreBtn"
+			style="width: 100%; box-sizing: border-box;">${nls.loadMore}</button>
+	</div>
+	<div class="footer">
+		<button type="button" data-dojo-type="dojox/mobile/Button"  data-dojo-attach-point="changeBtn"
+			data-dojo-props="disabled:true" class="primaryBtn">${nls.change}</button>
+	</div>
+</div>

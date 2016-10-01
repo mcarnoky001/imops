@@ -1,0 +1,608 @@
+/*application design*/
+.mblBackground {
+	background-color: #f1f1f1;
+}
+
+.mblButton {
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 3px;
+	font-weight: 100;
+	font-size: 16px;
+	background: #FFFFFF;
+	color: #506CB3;
+}
+
+.mblTabBarTallTab .mblTabBarButton {
+	background: #1A2D5E;
+	margin-top: 3px;
+	margin-right: 2px;
+	width: 78px;
+	height: 42px;
+	color: white;
+	text-align: center;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-style: solid;
+	border-color: white;
+	font-weight: 300;
+	top: 3px;
+}
+
+.mblTabBarTallTab .mblTabBarButton:last-of-type {
+	background: #1A2D5E;
+	margin-top: 3px;
+	margin-right: 2px;
+	width: 78px;
+	height: 42px;
+	color: white;
+	text-align: center;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-style: solid;
+	border-color: white;
+	font-weight: 300;
+	top: 3;
+}
+
+.mblTabBarTallTab {
+	background: #1A2D5E;
+	height: 49px;
+}
+
+.mblTabBarTallTab .mblTabBarButtonLabel {
+	font-size: 16px;
+	font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.mblTabBarTallTab {
+	border-bottom: none;
+}
+
+.mblTextBox {
+	height: 29px;
+	border-radius: 3px;
+}
+
+.dijitTextBox {
+	margin: 0;
+}
+
+.dojoDateTextBox {
+	border: none;
+}
+
+.mblDateTextBox {
+	height: 29px;
+	border-style: solid;
+	border-radius: 3px !important;
+	border-color: rgb(224, 223, 221) !important;
+	border-width: 0.33px !important;
+}
+
+.mblTextArea {
+	height: 58px;
+	border-radius: 3px !important;
+}
+
+.line-separator {
+	border-bottom-color: rgb(224, 223, 221) !important;
+}
+
+.claro .dijitTextBoxDisabled .dijitInputContainer {
+	background-color: #FFFFFF !important;
+	border-color: rgb(224, 223, 221) !important;
+	border-style: solid;
+	border-width: 0.33px !important;
+	border-color: rgb(199, 196, 194) !important;
+	border-radius: 3px !important;
+	border: none;
+}
+
+.claro .dijitTextBox .dijitInputInner {
+	padding-left: 5px !important;
+}
+
+.mblTextBox {
+	padding-left: 5px !important;
+}
+
+.claro .dijitTextBox {
+	border-color: rgb(199, 196, 194) !important;
+	height: 29px;
+}
+
+.claro .dijitComboBox .dijitArrowButtonInner {
+	background-position: -71px 53%;
+}
+
+.pickerInputBox {
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-style: solid;
+	border-width: 0.33px !important;
+	border-color: rgb(199, 196, 194);
+	background-color: rgb(255, 255, 255);
+	height: 29px;
+}
+
+.pickerInputButton {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-width: 0.33px !important;
+	background-image: url('./resources/Lupa.png') !important;
+	border-left: 0;
+	background-repeat: no-repeat;
+	background-size: 60% 60% !important;
+	background-position: center center !important;
+	border-color: rgb(199, 196, 194);
+	background-color: #FFFFFF;
+	width: 29px;
+	height: 29px !important;
+}
+
+.functionsDialog .mblButtonDisabled, .functionsDialog .mblButton:disabled
+	{
+	color: grey;
+	background-image: none;
+}
+
+.footer .mblButton {
+	margin: 0;
+	flex: 1;
+	padding: 0px 5px;
+	color: #3C7DFF;
+}
+
+.mblButton.mblButtonSelected {
+	background: linear-gradient(to bottom, #ededed 0, #fff 100%);
+	color: #000000;
+}
+
+.header>.mblHeading {
+	background: #1A2D5E !important;
+	border-bottom: 3px solid #69AFE1;
+	height: 44px;
+}
+
+.mblFormLayout {
+	background: white;
+}
+
+.mblHeading .headIcon {
+	background: transparent;
+	color: white;
+	border: none;
+}
+
+.mblAccordionTitleTextBox {
+	background-color: white;
+}
+
+.screenTitle {
+	background: #F2F5FA !important;
+	font-size: 18px !important;
+	color: rgb(83, 71, 78) !important;
+	line-height: 1.806 !important;
+	padding-left: 15px;
+	padding-top: 10px !important;
+	font-weight: 400 !important;
+}
+
+.mblSimpleDialogTitle {
+	background: #F2F5FA !important;
+	font-size: 18px !important;
+	color: rgb(83, 71, 78) !important;
+	line-height: 1.806 !important;
+	padding-left: 15px;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	font-weight: 400 !important;
+	margin-left: 0px;
+	padding-left: 5px;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding-right: 10px;
+}
+
+.screenTitleBackground {
+	background: #F2F5FA !important;
+}
+
+.detailBody {
+	padding-top: 0px !important;
+	padding-bottom: 15px !important;
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+
+/*fonts*/
+body.gjax, .claro .mblToolBarButton {
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 13px;
+	font-weight: 100;
+}
+
+.dgrid-header th {
+	font-weight: 400;
+}
+
+label {
+	width: 135px;
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size: 14px;
+	color: rgb(115, 105, 103);
+	line-height: 3.143;
+}
+
+/*grid*/
+.claro .dgrid {
+	border: none !important;
+	margin-bottom: 10px;
+}
+
+.claro .dgrid .ui-widget-header .dgrid-cell {
+	background: #d5d6d7;
+	background: linear-gradient(to bottom, #d5d6d7 0%, #e2e2e3 100%);
+}
+
+.dgrid-header tr {
+	color: #76787b;
+	background: #e2e2e3;
+	background: linear-gradient(to bottom, #e2e2e3 0%, #d5d6d7 100%);
+}
+
+.claro .dgrid .dgrid-footer {
+	color: #76787b;
+	background: #e2e2e3;
+	background: linear-gradient(to bottom, #e2e2e3 0%, #d5d6d7 100%);
+}
+
+.claro .ui-widget-header .dgrid-cell {
+	padding-top: 11px;
+	padding-bottom: 11px;
+	border: none;
+}
+
+.claro .dgrid-cell {
+	border: none !important;
+	color: #3e3e3e;
+	padding: 10px 3px;
+	padding-left: 10px;
+	font-size: 13px;
+	/* text-overflow: ellipsis;
+	white-space: nowrap;*/
+	vertical-align: middle;
+}
+
+.claro .dgrid .ui-state-default.dgrid-row-even {
+	background: #f1f1f1;
+}
+
+.claro .dgrid-navigation .dgrid-page-link {
+	font-weight: 400;
+	font-size: 11px;
+	padding: 0 2px;
+}
+
+.claro .dgrid-pagination .dgrid-page-disabled {
+	font-weight: 700;
+	color: #76787b;
+}
+
+.claro .dgrid-previous.dgrid-page-link, .claro .dgrid-next.dgrid-page-link,
+	.claro .dgrid-last.dgrid-page-link, .claro .dgrid-first.dgrid-page-link
+	{
+	background:
+		url("../../../_common/styles/_resources/pagination-nav-icons.png")
+		no-repeat 0 0;
+	text-indent: -9999px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	padding: 0;
+}
+
+.claro .dgrid-page-link.dgrid-next {
+	background-position: -20px 0;
+}
+
+.claro .dgrid-page-link.dgrid-last {
+	background-position: -100px 0;
+}
+
+.claro .dgrid-page-link.dgrid-first {
+	background-position: -80px 0;
+}
+/* disabled states */
+.claro .dgrid-page-disabled.dgrid-previous {
+	background-position: -40px 0;
+}
+
+.claro .dgrid-page-disabled.dgrid-next {
+	background-position: -60px 0;
+}
+
+.claro .dgrid-page-disabled.dgrid-first {
+	background-position: -120px 0;
+}
+
+.claro .dgrid-page-disabled.dgrid-last {
+	background-position: -140px 0;
+}
+
+.claro .dgrid-pagination-links {
+	vertical-align: middle;
+	margin: 0 4px;
+}
+
+.dgrid-pagination .dgrid-navigation, .dgrid-pagination .dgrid-page-size
+	{
+	padding: 2px;
+	padding-right: 10px;
+}
+
+.claro .dgrid-status {
+	padding: 2px;
+	padding-left: 10px;
+	font-size: 11px;
+	padding-top: 4px;
+}
+
+/* buttons */
+/* normal */
+.claro .dijitButton .dijitButtonNode, .claro .dijitDropDownButton .dijitButtonNode,
+	.claro .dijitComboButton .dijitButtonNode, .claro .dijitToggleButton .dijitButtonNode
+	{
+	color: #fff;
+	border: 1px solid #bfc2c7;
+	padding: 0px 10px 0px 10px;
+	border-radius: 3px;
+	background: #fff;
+	background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+}
+
+.claro .dijitDropDownButton .dijitButtonNode.dijitArrowButton, .claro .dijitComboButton .dijitButtonNode.dijitArrowButton,
+	.claro .dijitToggleButton .dijitButtonNode.dijitArrowButton {
+	padding: 4px 6px 6px 6px;
+	border-left-width: 0;
+}
+/* hover */
+.claro .dijitButtonHover .dijitButtonNode, .claro .dijitDropDownButtonHover .dijitButtonNode,
+	.claro .dijitComboButtonHover .dijitButtonNode, .claro .dijitToggleButtonHover .dijitButtonNode
+	{
+	background: #f2f2f2;
+	background: linear-gradient(to bottom, #f2f2f2 0%, #e2e2e2 100%);
+}
+/* active */
+.claro .dijitButtonActive .dijitButtonNode, .claro .dijitDropDownButtonActive .dijitButtonNode,
+	.claro .dijitComboButtonActive .dijitButtonNode, .claro .dijitToggleButtonActive .dijitButtonNode
+	{
+	background: #ededed;
+	background: linear-gradient(to bottom, #ededed 0%, #fff 100%);
+}
+/* disabled */
+.claro .dijitButtonDisabled .dijitButtonNode, .claro .dijitDropDownButtonDisabled .dijitButtonNode,
+	.claro .dijitComboButtonDisabled .dijitButtonNode, .claro .dijitToggleButtonDisabled .dijitButtonNode
+	{
+	border: none;
+	border-color: #bfc2c7;
+	background: #f8f8f8;
+	background: linear-gradient(to bottom, #f8f8f8 0%, #f3f3f3 100%);
+}
+
+.claro .dijitButtonText {
+	font-size: 13px;
+	line-height: 17px;
+	color: #000000;
+	padding: 0px;
+}
+
+.claro .dijitButtonDisabled .dijitButtonText, .claro .dijitDropDownButtonDisabled .dijitButtonText,
+	.claro .dijitComboButtonDisabled .dijitButtonText, .claro .dijitToggleButtonDisabled .dijitButtonText
+	{
+	color: #b8b8ba;
+}
+/* secondary btn - looks like link */
+.claro .secondaryBtn {
+	background: none;
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	padding: 0;
+	font-size: 15px;
+	line-height: 17px;
+	color: #3a73ae;
+	border-bottom: 1px solid transparent;
+}
+
+.claro .secondaryBtn.mblButtonDisabled {
+	color: #b8b8ba;
+}
+
+/* primary btn */
+.claro .primaryBtn, .claro .secondaryBtn {
+	margin: 5px 5px 0 10px;
+}
+
+.claro .primaryBtn .dijitButtonText {
+	padding: 3px 20px;
+	font-size: 15px;
+	color: #fff;
+}
+
+.claro .primaryBtn {
+	border: 1px solid #2FB800;
+	font-weight: 300;
+	font-size: 16px;
+	background: #74c57a;
+	/* background: linear-gradient(to bottom, #73FB43 0%, #52FA1E 100%); */
+	color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(67, 137, 38);
+	border-radius: 6px;
+	background: -moz-linear-gradient(90deg, rgb(90, 172, 49) 0%,
+		rgb(127, 191, 96) 100%);
+	background: -webkit-linear-gradient(90deg, rgb(90, 172, 49) 0%,
+		rgb(127, 191, 96) 100%);
+	background: -ms-linear-gradient(90deg, rgb(90, 172, 49) 0%,
+		rgb(127, 191, 96) 100%);
+	box-shadow: 0px 4px 13px 0px rgba(12, 4, 5, 0.3);
+	height: 42px;
+}
+
+.claro .primaryBtn:disabled {
+	font-weight: 300;
+	font-size: 16px;
+	border: 1px solid #b8b8ba;
+	background: #74c57a;
+	/* background: linear-gradient(to bottom, #73FB43 0%, #52FA1E 100%); */
+	color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #b8b8ba;
+	border-radius: 6px;
+	background: -moz-linear-gradient(90deg, #DDDDDD 0%, #DDDDDD 100%);
+	background: -webkit-linear-gradient(90deg, #DDDDDD 0%, #DDDDDD 100%);
+	background: -ms-linear-gradient(90deg, #DDDDDD 0%, #DDDDDD 100%);
+	box-shadow: 0px 4px 13px 0px rgba(12, 4, 5, 0.3);
+	height: 42px;
+	color: #b8b8ba;
+	border: 1px solid #b8b8ba
+}
+
+.claro .primaryBtn.mblButtonSelected {
+	background: #48b24f;
+	background: linear-gradient(to bottom, #48b24f 0%, #74c57a 100%);
+}
+
+.claro .primaryBtn.mblButtonDisabled {
+	border: 1px solid #d6d6d6;
+	background: #f8f8f8;
+	background: linear-gradient(to bottom, #f8f8f8 0%, #f3f3f3 100%);
+	color: #b8b8ba;
+	background: #f8f8f8;
+	background: linear-gradient(to bottom, #f8f8f8 0%, #f3f3f3 100%);
+}
+
+}
+.claro .dgrid-cell>.dijitButton {
+	margin: 0;
+}
+
+.claro .dgrid .dgrid-cell-columnButton .dijitButton .dijitButtonNode,
+	.claro .dgrid .gjaxLinkButton.dijitButton .dijitButtonNode {
+	border-radius: 0;
+	border: none;
+	background: none;
+	box-shadow: none;
+	outline: none;
+}
+
+.dgrid .gjaxLinkButton a.dijitButtonNode {
+	color: #000;
+}
+
+.dgrid .dgrid-btnEdit, .dgrid .dgrid-edit-button, .dgrid .dgrid-del-button,
+	.dgrid .dgrid-btnDelete, .dgrid .dgrid-detail-button {
+	opacity: 0;
+}
+
+.dgrid .dgrid-btnEdit, .dgrid .dgrid-edit-button, .dgrid .dgrid-btnDelete,
+	.dgrid .dgrid-del-button, .dgrid .dgrid-custom-button, .dgrid .dgrid-detail-button,
+	.dgrid .dijitButtonDisabled .dgrid-custom-button, .dgrid .dijitButtonDisabled .dgrid-detail-button,
+	.dgrid .dgrid-btnSubmit {
+	width: 18px;
+	height: 18px;
+}
+
+.dgrid .dgrid-btnEdit, .dgrid .dgrid-edit-button {
+	background-image:
+		url("../../../_common/styles/_resources/grid-icon-edit.png");
+	background-position: 0 0;
+}
+
+.dgrid .dgrid-btnDelete, .dgrid .dgrid-del-button {
+	background-image:
+		url("../../../_common/styles/_resources/grid-icon-trash.png");
+	background-position: 0 0;
+}
+
+.dgrid .dgrid-detail-on-screen-button {
+	width: 20px;
+	height: 15px;
+	background:
+		url("../../../_common/styles/_resources/grid-icon-detail.png")
+		no-repeat 0 0;
+}
+
+.dgrid .dgrid-custom-button, .dgrid .dgrid-detail-button, .dgrid .dijitButtonDisabled .dgrid-custom-button,
+	.dgrid .dijitButtonDisabled .dgrid-detail-button {
+	background-image:
+		url("../../../_common/styles/_resources/grid-icon-custom.png");
+}
+
+.dgrid .dgrid-cell-columnButton {
+	width: 50px;
+}
+
+.functionsDialog .mblButton, .changeStatusDialog .statusBtn {
+	color: #001A84;
+	font-weight: 400;
+	font-size: 20px;
+	height: 40px;
+	background-color: white;
+	font-family: inherit !important;
+	line-height: 17px !important;
+	border: 1px solid #FFFFFF;
+	border-bottom-color: #828687;
+}
+
+.mblButtonDisabled, .mblButton:disabled {
+	color: #C7C4C2 !important;
+}
+
+.mblButtonDisabled {
+	background: #74c57a !important;
+}
+
+.functionsDialog .dijitDropDownButton .dijitButtonNode {
+	border: none;
+	background: inherit !important;
+}
+
+.dijitDropDownButton, .dijitDropDownButton .dijitButtonNode {
+	margin: auto;
+	border: 1px solid #FFFFFF;
+	border-bottom-color: #828687;
+}
+
+.mblHeading .mblToolBarButton.homeIcon {
+	background: url("../../../images/Logo_UPM2.png") no-repeat center;
+}
+
+.headIcon {
+	background: #1A2d5E;
+	background-color: none !important;
+	background-image: none !important;
+	font-size: 18px !important;
+	color: #FFFFFF;
+}
+
+.headIcon.logout {
+	color: white;
+}

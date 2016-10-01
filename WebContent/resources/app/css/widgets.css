@@ -1,0 +1,170 @@
+/*widget general rules*/
+
+/*widget specific rules*/
+.searchResult {
+	padding: 2px 0;
+}
+
+.searchResult:before {
+	content: "";
+	margin-right: 5px;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: url("../../../_common/styles/_resources/icons-header.png")
+		no-repeat 0px 0;
+	vertical-align: bottom;
+}
+
+.searchResult.Policy:before {
+	background-position: -116px 0;
+}
+
+.searchResult.Customer:before {
+	background-position: -20px 0;
+}
+
+.searchResult.Task:before {
+	background-position: 0px 0;
+}
+
+.gjaxDialog {
+	text-align: left;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.gjaxDialog fieldset {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	min-width: 0;
+	overflow: auto;
+}
+
+.gjaxDialog pre {
+	white-space: pre;
+}
+
+.gjaxDialog .dijitDialogPaneActionBar {
+	width: 100%;
+	padding-right: 1px;
+	margin-left: -5px;
+}
+
+.gjaxDialog .mblSimpleDialogTitle {
+	margin-top: 0;
+	padding-top: 7px;
+	font-size: 16px;
+}
+
+.gjaxDialog .mblSimpleDialogTitle {
+	color: white;
+}
+
+.gjaxDialog.error {
+	border: 1px solid #e06161;
+}
+
+.gjaxDialog.error .mblSimpleDialogTitle {
+	background: #e06161;
+}
+
+.gjaxDialog.info {
+	border: 1px solid #3a73ae;
+}
+
+.gjaxDialog.info .mblSimpleDialogTitle {
+	background: #3a73ae;
+}
+
+.gjaxDialog.warning {
+	border: 1px solid #f8c964;
+}
+
+.gjaxDialog.warning .mblSimpleDialogTitle {
+	background: #f8c964;
+}
+
+.gjaxDialog.success {
+	border: 1px solid #48ae4f;
+}
+
+.gjaxDialog.success .mblSimpleDialogTitle {
+	background: #48ae4f;
+}
+
+.gjaxDialog.question {
+	border: 1px solid #3a73ae;
+}
+
+.gjaxDialog.question .mblSimpleDialogTitle {
+	background: #3a73ae;
+}
+.LongListDialog .listItem {
+	line-height: 21px;
+	font-weight: normal;
+	overflow: visible;
+	text-align: left;
+}
+
+.LongListDialog .listItem .firstRowSecond, .LongListDialog .listItem .secondRowSecond
+	{
+	float: right;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 45%;
+}
+
+.LongListDialog .listItem .secondRowSecond {
+	float: right;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 30%;
+}
+
+.LongListDialog .listItem .secondRowFirst {
+	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 55%;
+}
+
+.LongListDialog .listItem .secondRowFirst, .LongListDialog .listItem .secondRowSecond,
+	.LongListDialog .listItem .firstRowSecond {
+	color: gray;
+}
+
+.LongListDialog {
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+}
+
+.LongListDialog .mblScrollablePane {
+	height: 100%;
+}
+
+.LongListDialog .mblSimpleDialogContainer {
+	display: none;
+}
+
+.LongListDialog .listItem .mblListItemRightIcon {
+	display: flex;
+}
+
+.LongListDialog .listItem span {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 50%;
+}
+
+.LongListDialog .Horizontalfooter .mblButton {
+	margin: 0;
+	flex: 1;
+}

@@ -1,0 +1,12 @@
+<div class="mblBackground">
+    <div data-dojo-type="dojox/mobile/Heading" data-dojo-props="fixed: 'top'">
+        <button id="filterButton" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-props="moveTo: 'filter',transitionDir:-1" style="position: absolute; left: 0">Filter</button>
+        List
+        <button data-dojo-type="dojox/mobile/ToolBarButton" style="position: absolute; right: 0" data-dojo-id="AddButton" data-dojo-props="moveTo: 'register',transitionDir:-1" " data-dojo-attach-point="add ">Register</button>
+    </div>
+    <div id="selectionMade ">None selected.</div>
+    <div data-dojo-type="dojox/mobile/ScrollableView">
+        <div id="edge " data-dojo-type="dojox/mobile/EdgeToEdgeStoreList" data-dojo-attach-point="list" data-dojo-props=" labelProperty: 'displayName', itemRenderer: this.ContactListItem, placeHolder: 'Search', stateful: false">
+        </div>
+    </div>
+</div>

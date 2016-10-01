@@ -1,0 +1,29 @@
+/* Mobile common css */
+@IMPORT url("./layout.css");
+
+@IMPORT url("./theme.css");
+
+@IMPORT url("./widgets.css");
+
+.dijitHidden {
+    display: none;
+}
+#parent{
+    overflow:hidden;
+    background:yellow;
+    position:relative;
+    display:table;
+}
+.skillWidget{
+	background: red;
+	display: inline-block;
+	width: 30%;
+    margin-left: 3%;
+    height:20px;
+}
+.skillWidgetSmall{
+	display: inline-block;
+    width: 10%;
+    margin-left: 3%;
+    height:15px;
+}

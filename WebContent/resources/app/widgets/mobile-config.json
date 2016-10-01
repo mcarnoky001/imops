@@ -1,0 +1,26 @@
+{
+    "id": "dojox-app-test",
+    "dependencies": [
+    ],
+    "controllers": [
+        "dojox/app/controllers/Load",
+        "dojox/app/controllers/Transition",
+        "dojox/app/controllers/Layout",
+        "dojox/app/controllers/History"
+    ],
+    "defaultView": "header+home",
+    "defaultTransition": "slide",
+    "views": {
+    	"header" : {
+    		"controller" : "app/resources/app/controllers/header/header",
+    		"template" : "app/resources/app/controllers/header/header.html",
+    		"constraint" : "top",
+    		"nls" : "app/resources/app/controllers/header/nls/messages"
+    	},
+        "home": {
+            "controller": "app/resources/app/controllers/home",
+            "template": "app/resources/app/controllers/home.html",
+            "nls" : "app/resources/app/controllers/nls/messages"
+        }
+    }
+}

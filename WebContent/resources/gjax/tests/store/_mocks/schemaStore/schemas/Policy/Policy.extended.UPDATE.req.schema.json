@@ -1,0 +1,12 @@
+{
+    "$schema":"http://json-schema.org/draft-03/schema",
+    "additionalProperties":{},
+    "id":"Policy.extended.UPDATE.req.schema.json",
+    "type":"object", 
+    "properties":{
+        "prodName":{
+        	"type":"string",
+            "required":false
+        }
+    }
+}

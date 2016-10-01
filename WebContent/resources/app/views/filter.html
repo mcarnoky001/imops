@@ -1,0 +1,41 @@
+<div>
+    <div data-dojo-type="dojox/mobile/Heading" data-dojo-props="fixed: 'top'">
+        <button data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="backButton" data-dojo-props=" arrow: 'left', moveTo: 'list',transitionDir:-1" style="position: absolute; left: 0">Back</button>
+        Filter
+        <button data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="searchButton" style="position: absolute; right: 0" data-dojo-attach-event="onClick: _filter">Search</button>
+    </div>
+    <div data-dojo-type="dojox/mvc/Group" data-dojo-attach-point="detailGroup">
+        <div data-dojo-type="dojox/mobile/FormLayout" data-dojo-attach-point="formLayout" data-dojo-props="columns:'single'">
+            <div>
+                <label for="firstname">Search by user name:</label>
+                <fieldset>
+                    <input data-dojo-type="dojox/mobile/TextArea" data-dojo-props="placeHolder: 'First name', value:at('rel:','firstName'),intermediateChanges:true" data-dojo-attach-point="firstName" style="margin-left:10%; margin-right: 10%; width:80%">
+                    <input data-dojo-type="dojox/mobile/TextArea" data-dojo-props="placeHolder: 'Surname', value:at('rel:','surname'),intermediateChanges:true" data-dojo-attach-point="surname" style="margin-left:10%; margin-right: 10%; width:80%; margin-top: 5px">
+                    <!--  <button id="deleteButton" data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="deleteButton" data-dojo-attach-event="onClick: _deleteContact" class="mblRedButton" style="padding: 0 10px">Remove Employee</button> -->
+                </fieldset>
+            </div>
+        </div>
+        <label><b>Search by user skills:</b></label>
+        <div data-dojo-type="dojox/mvc/Repeat" data-dojo-attach-point="repeatWidget" data-dojo-props="exprchar: '#', children: at('rel:', 'skills')">
+            <div class="row" data-dojo-type="dojox/mvc/Group" data-dojo-attach-point="repeatGroup" data-dojo-props="target: at('rel:', '#{this.index}')">
+                <div>
+                    <div data-dojo-type="dojox/mobile/GridLayout" data-dojo-props='cols:4' style="height: 30px; margin-top: 2px">
+                        <div data-dojo-type="dojox/mobile/Pane">
+                            <input id="#{this.index}ID" class="checkBox" data-dojo-type="dojox/mobile/CheckBox" data-dojo-props='
+                            checked:false' style="margin-left:  5px;" type="checkbox"/>
+                        </div>
+                        <div data-dojo-type="dojox/mobile/Pane">
+                            <input id="#{this.index}IDtext" data-dojo-type="dojox/mobile/TextArea" data-dojo-attach-point="textArea" style="width: 100%; margin-left: -45px;height:10px " data-dojo-props="placeHolder: 'Name', value:at('rel:','name'),intermediateChanges:true, readOnly:at('rel:','old')" data-dojo-attach-point="name">
+                        </div>
+                        <div data-dojo-type="dojox/mobile/Pane">
+                            <input id="#{this.index}IDslider" type="range" style="width: 100%;margin-top: 5px;margin-left: -5px" data-dojo-type="dojox/mobile/Slider" max="4" data-dojo-props="step:1, disabled:true, readOnly:true, value:at('rel:','value')">
+                        </div>
+                        <div data-dojo-type="dojox/mobile/Pane">
+                            <span data-dojo-type="dojox/mvc/Output" data-dojo-attach-point="text" data-dojo-props="value:at('rel:','value').direction(at.from).transform(converter)" style="margin-left: 50px;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

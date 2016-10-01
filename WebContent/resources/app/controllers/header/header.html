@@ -1,0 +1,28 @@
+<div class="header">
+	<div data-dojo-type="app/libs/sidepane/SidePane" data-dojo-props="mode: 'overlay', position:'start'" data-dojo-attach-point="sidePane">
+		<h1 data-dojo-type="dojox/mobile/Heading" class="menuHeading">
+			<button class="homeIcon" data-dojo-type="dojox/mobile/ToolBarButton" style="float: left"></button>
+			<button class="toggler" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="toggler" data-dojo-props="" data-dojo-attach-event="click:toggle"
+				style="float: right"></button>
+		</h1>
+		<div data-dojo-type="dojox/mobile/ScrollableView" class="SWHidden" data-dojo-attach-point="scrollViewSW" style="height: 100%">
+			<ul data-dojo-type="dojox/mobile/EdgeToEdgeList" class="scrollList" style="height: 100%;">
+				<button class="headIcon contact" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="contactsBtn" data-dojo-props="target:'contactsList'">${nls.contacts}</button>
+				<button class="headIcon policies" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="policiesBtn" data-dojo-props="target:'policiesList'">${nls.policies}</button>
+				<button class="headIcon renewals" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="renewalsBtn" data-dojo-props="target:'renewalsList'">${nls.renewals}</button>
+				<button class="headIcon claims" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="claimsBtn" data-dojo-props="target:'claimsList'">${nls.claims}</button>
+				<button class="headIcon tasks" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="tasksBtn" data-dojo-props="target:'tasksList'">${nls.tasks}</button>
+			</ul>
+			<div>
+				<button class="headIcon logout" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="logoutBtn">${nls.logout}</button>
+			</div>
+		</div>
+	</div>
+	<div data-dojo-type="dojox/mobile/Heading" data-dojo-attach-point="heading">
+		<button class="toggler" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="toggler" data-dojo-props="" data-dojo-attach-event="click:toggle"></button>
+		<button class="homeIcon headingMid" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="homeBtn"
+			data-dojo-props="target:'home',transitionDir:-1"></button>
+		<div id="buildInfo" class="buildInfoWrapper" style="float: right"></div>
+	</div>
+	<div data-dojo-attach-point="successMessage" class="successMessage"></div>
+</div>

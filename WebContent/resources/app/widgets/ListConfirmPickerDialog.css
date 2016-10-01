@@ -1,0 +1,13 @@
+.pickerPane .mblListItem span {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 50%;
+}
+.pickerPane .mblListItem {
+	padding-top: 10px;
+	line-height: 21px;
+	font-weight: normal;
+	overflow: visible;
+	text-align:start;
+}
