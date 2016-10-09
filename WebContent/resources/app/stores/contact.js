@@ -25,6 +25,27 @@ define([
         getIdentity: function(item) {
             return item._id;
         },
+        getCompanies : function(){
+            return this.db.query('company/employers').then(function(response) {
+                return response.rows.map(function(item) {
+                    return item.value;
+                });
+            }).catch(function(err) {
+                console.log(err);
+            });
+        },
+        getCompanyEmployers : function(item){
+            return this.db.query('company/employee', {
+        	starkey: [item,1],
+        	endkey: [item,0]
+            }).then(function(response) {
+                return response.rows.map(function(item) {
+                    return item.value;
+                });
+            }).catch(function(err) {
+                console.log(err);
+            });
+        },
 
         query: function(param) {
             return this.db.query('contacts/contacts', {
@@ -165,8 +186,8 @@ define([
         });
     }
 
-    var db = new PouchDB("contacts");
-    var remoteCouch = "http://localhost:5984/contacts";
+    var db = new PouchDB("imops");
+    var remoteCouch = "http://localhost:5984/imops";
     sync(db, remoteCouch);
 
     return new PouchStore({

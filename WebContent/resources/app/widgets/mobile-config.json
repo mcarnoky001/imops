@@ -22,29 +22,35 @@
             "template": "app/resources/app/views/home/home.html",
             "nls" : "app/resources/app/views/home/nls/messages"
         },
-        "register": {
-            "controller": "app/resources/app/controllers/register",
-            "template": "app/resources/app/views/register.html"
-        },
         "employeeList": {
             "controller": "app/resources/app/views/employee/list",
             "template": "app/resources/app/views/employee/list.html",
             "nls" : "app/resources/app/views/employee/nls/messages"
 		},
-        "companyList": {
-            "controller": "app/resources/app/views/company/list",
-            "template": "app/resources/app/views/company/list.html",
-            "nls" : "app/resources/app/views/company/nls/messages"
+        "employerList": {
+            "controller": "app/resources/app/views/employer/list",
+            "template": "app/resources/app/views/employer/list.html",
+            "nls" : "app/resources/app/views/employer/nls/messages"
         },
-         "companyDetail": {
-            "controller": "app/resources/app/views/company/detail",
-            "template": "app/resources/app/views/company/detail.html",
-            "nls" : "app/resources/app/views/company/nls/messages"
+         "employerDetail": {
+            "controller": "app/resources/app/views/employer/detail",
+            "template": "app/resources/app/views/employer/detail.html",
+            "nls" : "app/resources/app/views/employer/nls/messages"
         },
         "employeeDetail": {
             "controller": "app/resources/app/views/employee/detail",
             "template": "app/resources/app/views/employee/detail.html",
-            "nls" : "app/resources/app/views/company/nls/messages"
+            "nls" : "app/resources/app/views/employee/nls/messages"
+        },
+         "newEmployee": {
+            "controller": "app/resources/app/views/employee/newEmployee",
+            "template": "app/resources/app/views/employee/newEmployee.html",
+            "nls" : "app/resources/app/views/employee/nls/messages"
+        },
+         "newEmployer": {
+            "controller": "app/resources/app/views/employer/newEmployer",
+            "template": "app/resources/app/views/employer/newEmployer.html",
+            "nls" : "app/resources/app/views/employer/nls/messages"
         }
         
     }

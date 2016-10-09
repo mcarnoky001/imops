@@ -1,0 +1,33 @@
+<div class="newClaim">
+	<form data-dojo-type="dijit/form/Form" data-dojo-attach-point="claimForm">
+		<div class="detailBody" data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'single'">
+			<div>
+				<label>${nls.policyNumber}</label>
+				<div class="policyNumber">
+					<input class="pickerInputBox" data-dojo-type="dojox/mobile/TextBox" data-dojo-mixins="app/mobile/_common/widgets/_PickerMixin"
+						data-dojo-props="value:at('rel:','policyNumber'),pickOnClick:false,valueProperty:'policyNumber'" placeholder="${nls.policyNumber}"
+						data-dojo-attach-point="policyNumberTB" required="required" />
+					<button class="pickerInputButton" type="button" data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="policyPickerBtn" data-dojo-attach-event="click:showPolicyPicker"></button>
+				</div>
+			</div>
+			<div>
+				<label>${nls.claimDate}</label>
+				<div>
+					<input type="datetime-local" data-dojo-type="app/mobile/_common/widgets/DateTextBox" data-dojo-props="value:at('rel:','claimDate')"
+						placeholder="${nls.claimDate}" required="required" step="1" />
+				</div>
+			</div>
+			<div>
+				<label>${nls.policyProduct}</label>
+				<div>
+					<input class="pickerInputBox" data-dojo-attach-point="policyTypeFS" data-dojo-type="dijit/form/FilteringSelect"
+						data-dojo-props="value:at('rel:','policyProduct'),labelAttr:'product_name',searchAttr:'product_name',required:true" placeholder="${nls.policyProduct}" />
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="footer">
+		<button type="button" data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:createClaim" data-dojo-attach-point="createBtn"
+			data-dojo-props="disabled:true" class="primaryBtn">${nls.createClaim}</button>
+	</div>
+</div>
