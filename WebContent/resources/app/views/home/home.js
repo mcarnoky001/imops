@@ -5,19 +5,14 @@ define([
 ], function(TransitionEvent) {
 	return {
 
-		createNewClaim : function() {
+		createNewEmployer : function() {
 			new TransitionEvent(this.domNode, {
-				target : "register"
+				target : "newEmployer"
 			}).dispatch();
 		},
-		createNewTask : function() {
+		createNewEmployee : function() {
 			new TransitionEvent(this.domNode, {
-				target : "register"
-			}).dispatch();
-		},
-		createNewQuote : function(){
-			new TransitionEvent(this.domNode, {
-				target : "policyDetail"
+				target : "newEmployee"
 			}).dispatch();
 		}
 	};

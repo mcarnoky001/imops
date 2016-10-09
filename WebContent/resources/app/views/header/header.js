@@ -11,6 +11,7 @@ define([
 	"dojox/mobile/Button",
 	"dojo/request/registry",
 	"dojo/dom",
+	"gjax/encoders/html/encodeSmp",
 	"dojo/dom-attr",
 	"dojo/dom-geometry",
 	"dojox/mobile/Pane",
@@ -30,7 +31,7 @@ define([
 	"dojox/mobile/ScrollableView",
 	"app/libs/sidepane/SidePane",
 	"dojo/NodeList-dom"
-], function(i18n, query, array, domClass, throttle, on, lang, domConstruct, aspect, Button, request, dom,// 
+], function(i18n, query, array, domClass, throttle, on, lang, domConstruct, aspect, Button, request, dom,encHtml,// 
 domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry) {
 
 	var SAVE_MESSAGE_DURATION = 4000;

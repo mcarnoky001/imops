@@ -1,7 +1,7 @@
 <div class="claimDetail">
-	<form data-dojo-type="dijit/form/Form" data-dojo-attach-point="claimForm">
+	<form data-dojo-type="dijit/form/Form" data-dojo-attach-point="employerForm">
 		<div class="screenTitleBackground">
-			<label class="screenTitle">${nls.claimDetail}</label>
+			<label class="screenTitle">${nls.employer}</label>
 			<ul data-dojo-type="dojox/mobile/TabBar" data-dojo-props='barType:"segmentedControl",  fixed:"top"'>
 				<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showGeneralTab" data-dojo-props='selected:true'>${nls.general}</li>
 				<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showTaskTab">${nls.relatedTasks}</li>
@@ -10,98 +10,16 @@
 		</div>
 		<div id="general" class="detailBody" data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'single'">
 			<div>
-				<label>${nls.claimNumber}</label>
-				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','claimNumber')"></div>
+				<label>${nls.companyName}</label>
+				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','name')"></div>
 			</div>
 			<div>
-				<label>${nls.policyNumber}</label>
-				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','policyNumber')"></div>
-			</div>
-			<!-- 			<div> -->
-			<!-- 				<label>${nls.claimDate}</label> -->
-			<!-- 				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','claimDate').transform('dateString')"></div> -->
-			<!-- 			</div> -->
-			<div>
-				<label>${nls.claimDate}</label>
+				<label>${nls.address}</label>
 				<div>
-					<input type="datetime-local" data-dojo-type="app/mobile/_common/widgets/DateTextBox" data-dojo-props="value:at('rel:','claimDate')" step="1" />
+					<input data-dojo-type="dojox/mobile/TextBox"
+						data-dojo-props="value:at('rel:','address')" placeholder="${nls.address}"
+						data-dojo-attach-point="addressTB" required="required" />
 				</div>
-			</div>
-			<div>
-				<label>${nls.policyProduct}</label>
-				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','policyProduct_name')"></div>
-			</div>
-			<div>
-				<label>${nls.claimType}</label>
-				<!-- 				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','claimType_name')"></div> -->
-				<div>
-					<input class="pickerInputBox" data-dojo-attach-point="claimTypeFS" data-dojo-type="dijit/form/FilteringSelect"
-						data-dojo-mixins="app/mobile/_common/widgets/_TooltipMixin"
-						data-dojo-props="tooltipText: '${nlsTT.claimTypeTT}' , resolvedItem:at('rel:','resolved:claimType')" />
-				</div>
-			</div>
-			<div>
-				<label>${nls.eventCode}</label>
-				<div>
-					<input class="pickerInputBox" data-dojo-attach-point="eventCodeFS" data-dojo-type="dijit/form/FilteringSelect"
-						data-dojo-props="resolvedItem:at('rel:','resolved:eventCode')" />
-				</div>
-			</div>
-			<div>
-				<label>${nls.incidentCode}</label>
-				<div>
-					<input class="pickerInputBox" data-dojo-attach-point="incidentCodeFS" data-dojo-type="dijit/form/FilteringSelect"
-						data-dojo-props="resolvedItem:at('rel:','resolved:incidentCode')" />
-				</div>
-			</div>
-			<div>
-				<label>${nls.incidentDescription}</label>
-				<div>
-					<textarea data-dojo-attach-point="incidentDescriptionTA" data-dojo-type="dojox/mobile/TextArea"
-						data-dojo-props="resolvedItem:at('rel:','resolved:incidentDescription')"></textarea>
-				</div>
-			</div>
-			<div>
-				<label>${nls.consultant}</label>
-				<div class="picker">
-					<input class="pickerInputBox" data-dojo-type="dojox/mobile/TextBox" data-dojo-mixins="app/mobile/_common/widgets/_PickerMixin"
-						data-dojo-props="value:at('rel:','claimConsultant_name')" data-dojo-attach-point="consultantPick" />
-					<button class="pickerInputButton" type="button" data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:showConsultantPicker"></button>
-				</div>
-			</div>
-			<div>
-				<label>${nls.stateOfLoss}</label>
-				<div>
-					<input class="pickerInputBox" data-dojo-attach-point="stateOfLossFS" data-dojo-type="dijit/form/FilteringSelect"
-						data-dojo-props="resolvedItem:at('rel:','resolved:stateOfLoss')" />
-				</div>
-			</div>
-			<div>
-				<label>${nls.countryOfPosting}</label>
-				<div>
-					<input class="pickerInputBox" data-dojo-attach-point="countryOfPostingFS" data-dojo-type="dijit/form/FilteringSelect"
-						data-dojo-props="resolvedItem:at('rel:','resolved:countryOfPosting')" />
-				</div>
-			</div>
-			<div>
-				<label>${nls.claimReportDate}</label>
-				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','claimReportDate').transform('dateString')"></div>
-			</div>
-			<div>
-				<label>${nls.policyHolder}</label>
-				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','policyHolder_displayName')"></div>
-			</div>
-			<div>
-				<label>${nls.claimStatus}</label>
-				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','status_name')"></div>
-			</div>
-			<div>
-				<label class="claimantsLabel">${nls.claimants}</label>
-				<div data-dojo-type="dojox/mobile/EdgeToEdgeStoreList" data-dojo-attach-point="claimantsList"></div>
-			</div>
-			<div>
-				<label class="estimatesLabel">${nls.estimates}</label>
-				<div data-dojo-type="dojox/mobile/EdgeToEdgeStoreList" data-dojo-attach-point="estimatesList"></div>
 			</div>
 		</div>
 	</form>

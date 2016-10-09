@@ -1,0 +1,15 @@
+.detailBody {
+	background-color: white;
+}
+
+.itemList .mblTextBox {
+	margin-top: 7px;
+	margin-bottom: 5px;
+}
+
+.itemList .mblListItem {
+	padding-top: 10px;
+	line-height: 21px;
+	font-weight: normal;
+	overflow: visible;
+}

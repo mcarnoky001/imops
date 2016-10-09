@@ -26,7 +26,7 @@ define([
             return item._id;
         },
         getCompanies : function(){
-            return this.db.query('company/employers').then(function(response) {
+            return this.db.query('company/employer').then(function(response) {
                 return response.rows.map(function(item) {
                     return item.value;
                 });

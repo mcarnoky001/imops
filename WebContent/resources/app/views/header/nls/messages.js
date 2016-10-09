@@ -6,6 +6,9 @@ define({
 		renewals : "Renewals",
 		claims : "Claims",
 		tasks : "Tasks",
-		logout : "Logout"
+		logout : "Logout",
+		employee: "Employee",
+		employer: "Employer",
+		button: "Empty Button"
 	}
 });

@@ -1,0 +1,8 @@
+<div class="itemList detailBody">
+	<input type="search" data-dojo-type="dojox/mobile/TextBox" data-dojo-attach-point="searchBox" class="mblSearchBox" data-dojo-props="intermediateChanges:true" style="width:100%;box-sizing:border-box;" />
+	<div data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="scrollWrapper">
+		<div data-dojo-attach-point="list" data-dojo-type="dojox/mobile/EdgeToEdgeStoreList" data-dojo-mixins="dojox/mobile/LongListMixin"
+			data-dojo-props="labelProperty:'code'"></div>
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="showAllBtn" data-dojo-props="hidden:true" class="showAllBtn" style="width:100%;box-sizing:border-box;">${nls.showAll}</button>
+	</div>
+</div>

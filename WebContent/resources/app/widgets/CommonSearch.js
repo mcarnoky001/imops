@@ -11,14 +11,17 @@ define([
 
 	var listViews = {
 		Contact : "contactsList",
-		Policy : "policiesList"
+		Policy : "policiesList",
+		Employer: "employerList"
 	};
 
 	var detailViews = {
 		Contact : "contactsDetail",
 		Policy : "policyDetail",
 		Task : "taskDetail",
-		Claim : "claimDetail"
+		Claim : "claimDetail",
+		Employer: "employerDetail"
+		
 	};
 
 	return declare([
@@ -45,6 +48,11 @@ define([
 			{
 				businessType : "Claim",
 				label : i18n.moreClaims,
+				url : appConfig.screens.claims.search + "?searchString=${0}"
+			},
+			{
+			    businessType : "Employer",
+				label : i18n.moreEmployers,
 				url : appConfig.screens.claims.search + "?searchString=${0}"
 			}
 		],

@@ -1,5 +1,6 @@
 .header .successMessage {
-	background: #1A2d5E;
+	background: -webkit-linear-gradient(90deg, rgb(90, 172, 49) 0%,
+		rgb(127, 191, 96) 100%);;
 	text-align: center;
 	position: fixed;
 	width: 100%;

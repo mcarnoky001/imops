@@ -15,7 +15,7 @@ define({
 		changeStatus : "Change Status",
 		functions : "Functions",
 		changePolicy : "Change Policy",
-		createTask : "Create Task",
+		createEmployer : "Create Employer",
 		duplicateClaim : "Duplicate claim",
 		pleaseChoosePolicy : "Please choose Policy",
 		createClaim : "Create",
@@ -41,6 +41,10 @@ define({
 		dataNotFound: "No data found",
 		addNew: "Add new",
 		save: "Save",
-		consultant : "Claim Consultant"
+		consultant : "Claim Consultant",
+		address: "Address",
+		companyName: "Company Name",
+		createTask:"Create Task",
+		employer: "Employer"
 	}
 });

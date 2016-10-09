@@ -1,5 +1,5 @@
 define([
-	"app/claims/serviceHelper",
+        "../../stores/imops",
 	"gjax/mvc/ModelRefController",
 	"dojo/_base/lang",
 	"dojo/string",
@@ -15,18 +15,15 @@ define([
 	"dijit/form/Form",
 	"dojox/mobile/FormLayout",
 	"dojox/mobile/TextBox",
-	"app/mobile/_common/widgets/_PickerMixin",
 	"dojox/mobile/Button",
-	"app/mobile/_common/widgets/DateTextBox",
-	"xstyle/css!./newClaim.css"
-], function( serviceHelper, ModelRefController, lang, string, request, Uri, Memory, error, JsonRest,// 
+	"xstyle/css!./newEmployer.css"
+], function(imops, ModelRefController, lang, string, request, Uri, Memory, error, JsonRest,// 
 dialog, i18n, when, TransitionEvent) {
 
 	return {
 		init : function() {
-			this.policyNumberTB.set("pickerClass", PolicyPicker);
 			this.controller = new ModelRefController();
-			this.controller.bind(this.claimForm);
+			this.controller.bind(this.employerForm);
 			this.own(this.controller);
 			this.controller.watch(lang.hitch(this, "_updateBtnDisabled"));
 		},
@@ -35,32 +32,27 @@ dialog, i18n, when, TransitionEvent) {
 			this.controller.reset();
 			this.controller.loadModelFromData({
 				name:null,
-				adress: null,
+				address:null,
 				type: "company"
 			});
 		},
 		_updateBtnDisabled : function() {
-			this.createBtn.set("disabled", !this.claimForm.isValid());
+			this.createBtn.set("disabled", !this.employerForm.isValid());
 		},
 
 		createClaim : function() {
-			if (!this.claimForm.validate()) {
+			if (!this.employerForm.validate()) {
 				return;
 			}
 
 			var data = this.controller.getPlainValue();
-			data.policyNumber = data.verifiedPolicyNumber;
-
-			this._checkClaimDateOutsidePolicyPeriod()//
-			.then(lang.hitch(this, "_checkEndorsmentDate", data))//
-			.then(lang.hitch(this, function(doCreate) {
-				if (!doCreate) {
-					return;
-				}
-				return claimStore.add(data)//
-				.then(lang.hitch(this, "showEmployer"));
-			})) //
-			.otherwise(error.errbackDialog);
+		        when(imops.add(data))
+		                .then((lang.hitch(this, function(updatedResult) {
+		                    this.controller.model._id = updatedResult._id;
+		                    this.controller.model._rev = updatedResult._rev;
+		                    this.showEmployer();
+		                })).bind(this))
+		                .otherwise(error.errbackDialog);
 		},
 
 
@@ -68,7 +60,8 @@ dialog, i18n, when, TransitionEvent) {
 			new TransitionEvent(this.domNode, {
 				target : "employerDetail",
 				params : {
-					employerID : this.employerID
+					employerID : this.controller.model._id,
+					employerREV : this.controller.model._rev
 				}
 			}).dispatch();
 		}

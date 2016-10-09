@@ -24,12 +24,12 @@
         },
         "employeeList": {
             "controller": "app/resources/app/views/employee/list",
-            "template": "app/resources/app/views/employee/list.html",
+            "template":"app/resources/app/views/commonList/list.html",
             "nls" : "app/resources/app/views/employee/nls/messages"
 		},
         "employerList": {
             "controller": "app/resources/app/views/employer/list",
-            "template": "app/resources/app/views/employer/list.html",
+            "template": "app/resources/app/views/commonList/list.html",
             "nls" : "app/resources/app/views/employer/nls/messages"
         },
          "employerDetail": {

@@ -1,7 +1,9 @@
 /*general rules and overrides of dojo and gjax styles*/
 .dijitLayoutContainer {
 	position: static;
-	overflow-y: visible;
+	overflow-y: visible;    
+	background: white;
+	
 }
 
 .invisible {

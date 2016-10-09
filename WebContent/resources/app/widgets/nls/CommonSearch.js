@@ -5,6 +5,7 @@ define({
 		moreTasks : "More Tasks",
 		moreCustomers : "More Customers",
 		moreContacts : "More Contacts",
-		moreClaims : "More Claims"
+		moreClaims : "More Claims",
+		moreEmployers: "More Employers"
 	})
 });
