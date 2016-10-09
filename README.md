@@ -1,12 +1,11 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+IMOPS (Ingenious Meal Oriented Paying System).
 
-### What is this repository for? ###
+### Usage? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Diploma thesis on FIIT STU. Purpose of this project is to transform already used paper meal vouchers to electronic ones. There is an ability to limit or filter the bought stuff by category at payind.
+* v 1.0
 
 ### How do I get set up? ###
 
