@@ -12,15 +12,40 @@
     "defaultTransition": "slide",
     "views": {
     	"header" : {
-    		"controller" : "app/resources/app/controllers/header/header",
-    		"template" : "app/resources/app/controllers/header/header.html",
+    		"controller" : "app/resources/app/views/header/header",
+    		"template" : "app/resources/app/views/header/header.html",
     		"constraint" : "top",
-    		"nls" : "app/resources/app/controllers/header/nls/messages"
+    		"nls" : "app/resources/app/views/header/nls/messages"
     	},
         "home": {
-            "controller": "app/resources/app/controllers/home",
-            "template": "app/resources/app/controllers/home.html",
-            "nls" : "app/resources/app/controllers/nls/messages"
+            "controller": "app/resources/app/views/home/home",
+            "template": "app/resources/app/views/home/home.html",
+            "nls" : "app/resources/app/views/home/nls/messages"
+        },
+        "register": {
+            "controller": "app/resources/app/controllers/register",
+            "template": "app/resources/app/views/register.html"
+        },
+        "employeeList": {
+            "controller": "app/resources/app/views/employee/list",
+            "template": "app/resources/app/views/employee/list.html",
+            "nls" : "app/resources/app/views/employee/nls/messages"
+		},
+        "companyList": {
+            "controller": "app/resources/app/views/company/list",
+            "template": "app/resources/app/views/company/list.html",
+            "nls" : "app/resources/app/views/company/nls/messages"
+        },
+         "companyDetail": {
+            "controller": "app/resources/app/views/company/detail",
+            "template": "app/resources/app/views/company/detail.html",
+            "nls" : "app/resources/app/views/company/nls/messages"
+        },
+        "employeeDetail": {
+            "controller": "app/resources/app/views/employee/detail",
+            "template": "app/resources/app/views/employee/detail.html",
+            "nls" : "app/resources/app/views/company/nls/messages"
         }
+        
     }
 }

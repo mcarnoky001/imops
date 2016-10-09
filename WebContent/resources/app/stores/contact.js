@@ -12,7 +12,16 @@ define([
                 this[i] = options[i];
             }
         },
-
+        getAll: function(){
+            db.allDocs({
+        	  include_docs: true,
+        	  attachments: true
+        	}).then(function (result) {
+        	  // handle result
+        	}).catch(function (err) {
+        	  console.log(err);
+        	});
+        },
         getIdentity: function(item) {
             return item._id;
         },
@@ -43,14 +52,14 @@ define([
         put: function(item) {
             return this.db.put(item)
                 .then((function() {
-                    return this.get(item._id); //return updated document
+                    return this.get(item._id); // return updated document
                 }).bind(this));
         },
         remove: function(item) {
             return this.db.remove(item);
         },
         getDefaultSkills: function(item) {
-            return this.db.query('test/test', {
+            return this.db.query('contacts/contacts', {
                 group: true
             }).then(function(res) {
                 for (var i = 0; i < res.rows.length; i++) {

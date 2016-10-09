@@ -13,7 +13,7 @@ define([
     "dojo/_base/lang",
     "dojo/_base/declare",
     "dojox/mobile/ScrollableView",
-    "app/stores/contact",
+    "../stores/contact",
     "gjax/mvc/ModelRefController",
     "dojo/dom-class",
     "dojox/mobile/TransitionEvent",
@@ -51,29 +51,23 @@ define([
     "dijit/form/DataList"
 ], function(Memory, win, domConstruct, SimpleDialog, Button, ProgressIndicator, query, domStyle, Stateful, on, dom, lang, declare, View, contactStore, ModelRefController, domClass,
     TransitionEvent, when, template, registry, _TemplatedMixin, _WidgetsInTemplateMixin, ready, Array, Repeat, Group, Output, at) {
-    return declare([
-        View,
-        _TemplatedMixin,
-        _WidgetsInTemplateMixin
-    ], {
-        templateString: template,
-        controller: null,
+    return {
         skillController: null,
         userId: null,
         dlg: null,
         piIns: null,
         skills: [],
-        startup: function() {
+        init: function() {
             if (this._started) {
                 return;
             }
-            this.inherited(arguments);
+            //this.inherited(arguments);
 
             style = domStyle.get("saveButton", "background");
             this.saveButton.on("click", lang.hitch(this, function(evt) {
                 this.showDialog("Information", "Saved successfully");
             }));
-            contactStore.getDefaultSkills();
+            //contactStore.getDefaultSkills();
             window.controller = this.controller = new ModelRefController();
             this.controller.loadModelFromData({ skills: [] });
             this.controller.bind(this.detailGroup);
@@ -98,7 +92,7 @@ define([
             });
         },
         showProcessing: function() {
-            this.piIns = ProgressIndicator.getInstance();
+           /* this.piIns = ProgressIndicator.getInstance();
             this.dlg = new SimpleDialog();
             win.body().appendChild(this.dlg.domNode);
             var msgBox = domConstruct.create("div", {
@@ -117,7 +111,7 @@ define([
                 lang.hitch(this, function(e) { this.hideProcessing(); }));
             cancelBtn.placeAt(this.dlg.domNode);
             this.dlg.show();
-            this.piIns.start();
+            this.piIns.start();*/
 
         },
         hideProcessing: function() {
@@ -126,7 +120,7 @@ define([
         },
 
         showDialog: function(title, body) {
-            var dlg = new SimpleDialog();
+           /* var dlg = new SimpleDialog();
             win.body().appendChild(dlg.domNode);
             var msgBox = domConstruct.create("div", {
                     class: "mblSimpleDialogTitle",
@@ -141,22 +135,22 @@ define([
             dlg.show();
             setTimeout(function() {
                 dlg.hide();
-            }, 1500);
+            }, 1500);*/
         },
 
         setEventDelegators: function() {
-            on(this.repeatWidget, ".mblRedButton:click", lang.hitch(this, function(evt) {
+           /* on(this.repeatWidget, ".mblRedButton:click", lang.hitch(this, function(evt) {
                 var button = registry.getEnclosingWidget(event.target);
                 this.removeSkillItem(button.index);
                 //dom.byId("div" + button.index).style.display = 'none';
-            }));
+            }));*/
         },
         removeSkillItem: function(index) {
             this.controller.get("skills").splice(+index, 1);
         },
         _saveContact: function() {
             var contact = this.controller.getPlainValue();
-            contact.displayName = [contact.firstName, contact.surname].join(" ");
+           /* contact.displayName = [contact.firstName, contact.surname].join(" ");
             contact.contact = true;
             when(contact._id ? contactStore.put(contact) : contactStore.add(contact))
                 .then((lang.hitch(this, function(updatedContact) {
@@ -166,7 +160,7 @@ define([
                 .otherwise(function(err) {
                     console.error(err);
                 });
-        },
+*/        },
 
         _deleteContact: function() {
             when(contactStore.remove(this.controller.getPlainValue())) //using when to wrap pouch promise with dojo
@@ -191,5 +185,5 @@ define([
                 this.controller.get("skills").push(obj);
             };
         }
-    });
+    };
 });
