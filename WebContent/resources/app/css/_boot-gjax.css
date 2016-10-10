@@ -1,0 +1,28 @@
+/* This file is referenced in styles.tile, and also in merge css (merged to gjax.min.css) */
+/* Include all css from resoruces, that should be loaded, here  */
+
+/* Gjax CSS files, but resets */
+ @IMPORT url("../../gjax/css/normalize.css");
+
+@IMPORT url("../../gjax/css/normalize-edit.css");
+
+@IMPORT url("../../gjax/css/typography.css");
+
+/* Dojo official untouched CSS files */
+/* @IMPORT url("../../dijit/themes/claro/claro.css"); */
+
+/* Gjax CSS files */
+
+/* @IMPORT url("../../gjax/css/common.css");
+
+@IMPORT url("../../gjax/css/animate.css");
+
+@IMPORT url("../../gjax/css/gjax-message.css"); */
+/* Dgrid theme css */
+/* @IMPORT url("../../dgrid/css/skins/claro.css");
+
+@IMPORT url("../../gjax/dgrid/auto-height.css"); */
+
+/* Dojox css */
+/* CODEREVIEW: is this really needed for ahi?*/
+ @IMPORT url("../../dojox/widget/Wizard/Wizard.css");

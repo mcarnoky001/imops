@@ -5,6 +5,8 @@
 
 @IMPORT url("./widgets.css");
 
+@IMPORT url("./_boot-gjax.css");
+
 .dijitHidden {
     display: none;
 }
