@@ -68,7 +68,7 @@ define([
 		initTaskPane : function(results) {
 			
 		},
-		showTaskTab : function() {
+		showRestrictionsTab : function() {
 			var general = dom.byId("general");
 			var task = dom.byId("tasks");
 			var comment = dom.byId("comment");
@@ -77,7 +77,7 @@ define([
 			domStyle.set(comment, "display", "none");
 			this.taskPane.resize();
 		},
-		showRestrictionTab : function() {
+		showGeneralTab : function() {
 			var general = dom.byId("general");
 			var task = dom.byId("tasks");
 			var comment = dom.byId("comment");
@@ -105,7 +105,7 @@ define([
 
 
 		saveClaim : function() {
-			if (!this.employeeForm.validate()) {
+			if (!this.employerForm.validate()) {
 				return;
 			}
 			var data = this.controller.getPlainValue();
@@ -123,24 +123,48 @@ define([
 				message : this.nls.saveSuccessful
 			});
 		},
+
+		showFunctionsDlg : function() {
+
+		},
 		showRelatedDlg : function() {
-			this.relatedDialog.show();
 		},
 		showActionsDlg : function() {
-			this.actionsDialog.show();
 		},
-		removeEmployee : function() {
+		showDocuments : function() {
 		},
-		createRestriction: function(){
-			this.actionsDialog.hide();
-			new TransitionEvent(this.domNode, {
-				target : "newRestriction",
-				params : {
-					employeeID : this.controller.get("_id")
-				}
-			}).dispatch();
+
+		initChangeStatusDlg : function() {
+			
+			
 		},
-		changeCredit: function(){		
-		}
+		_changeStatus : function(targetStatus) {
+			
+		},
+
+		showChangeStatusDlg : function() {
+		},
+
+		createTask : function() {
+			
+		},
+		duplicateClaim : function() {
+			
+		},
+		changePolicy : function() {
+			
+		},
+		showDuplicateConfirmDialog : function() {
+
+		},
+		duplicateProceed : function(simpleDlg) {
+			
+		},
+
+		_goToClaimDetail : function(claim) {
+			
+		},
+		showConsultantPicker : function() {
+		},
 	};
 });

@@ -18,7 +18,7 @@ define([
         	  attachments: true
         	}).then(function (result) {
         	  // handle result
-        	}).catch(function (err) {
+        	}).otherwise(function (err) {
         	  console.log(err);
         	});
         },
@@ -30,7 +30,7 @@ define([
                 return response.rows.map(function(item) {
                     return item.value;
                 });
-            }).catch(function(err) {
+            }).otherwise(function(err) {
                 console.log(err);
             });
         },
@@ -42,7 +42,7 @@ define([
                 return response.rows.map(function(item) {
                     return item.value;
                 });
-            }).catch(function(err) {
+            }).otherwise(function(err) {
                 console.log(err);
             });
         },
@@ -54,7 +54,7 @@ define([
                 return response.rows.map(function(item) {
                     return item.value;
                 });
-            }).catch(function(err) {
+            }).otherwise(function(err) {
                 console.log(err);
             });
         },
@@ -88,7 +88,7 @@ define([
                 };
                 console.log(res);
                 return res;
-            }).catch(function(err) {
+            }).otherwise(function(err) {
                 console.log(err);
             });
         },
@@ -107,7 +107,7 @@ define([
 
                     return item.value;
                 });
-            }).catch(function(err) {
+            }).otherwise(function(err) {
                 console.log(err);
             });
         },
@@ -121,7 +121,7 @@ define([
                 };
                 response.skills = _skills;
                 return response;
-            }).catch(function(err) {
+            }).otherwise(function(err) {
                 console.log(err);
             });
 
@@ -169,7 +169,7 @@ define([
                     result.push(response.rows[k].value);
                 };
                 return result;
-            }).catch(function(err) {
+            }).otherwise(function(err) {
                 console.log(err);
             });
         }

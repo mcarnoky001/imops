@@ -1,0 +1,92 @@
+<div class="claimDetail">
+	<form data-dojo-type="dijit/form/Form" data-dojo-attach-point="employeeForm">
+		<div class="screenTitleBackground">
+			<label class="screenTitle">${nls.employer}</label>
+			<ul data-dojo-type="dojox/mobile/TabBar" data-dojo-props='barType:"segmentedControl",  fixed:"top"'>
+				<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showGeneralTab" data-dojo-props='selected:true'>${nls.general}</li>
+				<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showRestrictionsTab">${nls.restrictions}</li>
+				<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showLogsTab">${nls.logs}</li>
+			</ul>
+		</div>
+		<div id="general" class="detailBody" data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'single'">
+			<div>
+				<label>${nls.employeeID}</label>
+				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','id')"></div>
+			</div>
+			<div>
+				<label>${nls.employeeName}</label>
+				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','name')"></div>
+			</div>
+			<div>
+				<label>${nls.employeeSurname}</label>
+				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','surname')"></div>
+			</div>
+			<div>
+				<label>${nls.companyName}</label>
+				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','company')"></div>
+			</div>
+			<div>
+				<label>${nls.address}</label>
+				<div>
+					<input data-dojo-type="dojox/mobile/TextBox" data-dojo-props="value:at('rel:','address')" placeholder="${nls.address}" data-dojo-attach-point="addressTB"
+						required="required" />
+				</div>
+			</div>
+			<div>
+				<label>${nls.address}</label>
+				<div>
+					<select data-dojo-type="dijit/form/ComboBox" data-dojo-attach-point="checkTypeCB">
+						<option>3.15€</option>
+						<option>3.20€</option>
+						<option>3.30€</option>
+						<option>3.40€</option>
+						<option>3.50€</option>
+						<option>3.60€</option>
+						<option>3.80€</option>
+						<option>4.00€</option>
+						<option>4.20€</option>
+						<option>5.00€</option>	
+					</select>
+				</div>
+			</div>
+			<div>
+				<label>${nls.actualCredit}</label>
+				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','credit')"></div>
+			</div>
+		</div>
+	</form>
+
+	<div id="tasks" class="pane" data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="taskPane">
+		<div>
+			<span id="dataNotFoundTas" class="dataNotFound" style="display: none">${nls.dataNotFound}</span>
+		</div>
+		<div class="detailBody" data-dojo-attach-point="taskList" data-dojo-type="dojox/mobile/EdgeToEdgeStoreList" data-dojo-mixins="dojox/mobile/LongListMixin"
+			data-dojo-props="labelProperty:'code'"></div>
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="showAllBtn" data-dojo-props="hidden:true" class="showAllBtn"
+			style="width: 100%; box-sizing: border-box;">${nls.showAll}</button>
+	</div>
+	<div id="comment" class="pane" data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="commentPane">
+		<div>
+			<span id="dataNotFoundCom" class="dataNotFound" style="display: none">${nls.dataNotFound}</span>
+		</div>
+		<div class="detailBody" data-dojo-attach-point="commentList" data-dojo-type="dojox/mobile/EdgeToEdgeStoreList" data-dojo-mixins="dojox/mobile/LongListMixin"
+			data-dojo-props="labelProperty:'code'"></div>
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="showAllBtn" data-dojo-props="hidden:true" class="showAllBtn"
+			style="width: 100%; box-sizing: border-box;">${nls.showAll}</button>
+	</div>
+
+	<div class="footer">
+		<ul data-dojo-type="dojox/mobile/TabBar" data-dojo-props='barType:"tallTab", fill:"always"'>
+			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showRelatedDlg" data-dojo-attach-point="relatedBtn">${nls.related}</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showActionsDlg" data-dojo-attach-point="actionsBtn">${nls.actions}</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:saveClaim" data-dojo-attach-point="saveBtn">${nls.save}</li>
+		</ul>
+	</div>
+	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="relatedDialog" class="functionsDialog" data-dojo-props="closeButton:true">
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:removeEmployee" data-dojo-attach-point="removeEmployeeBtn">${nls.removeEmployee}</button>
+	</div>
+	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="actionsDialog" class="functionsDialog" data-dojo-props="closeButton:true">
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:createRestriction">${nls.createRestriction}</button>
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:changeCredit">${nls.changeCredit}</button>
+	</div>
+</div>

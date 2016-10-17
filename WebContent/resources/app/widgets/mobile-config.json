@@ -42,6 +42,11 @@
             "template": "app/resources/app/views/employee/detail.html",
             "nls" : "app/resources/app/views/employee/nls/messages"
         },
+        "restrictionDetail": {
+            "controller": "app/resources/app/views/restriction/detail",
+            "template": "app/resources/app/views/restriction/detail.html",
+            "nls" : "app/resources/app/views/restriction/nls/messages"
+        },
          "newEmployee": {
             "controller": "app/resources/app/views/employee/newEmployee",
             "template": "app/resources/app/views/employee/newEmployee.html",
@@ -51,7 +56,13 @@
             "controller": "app/resources/app/views/employer/newEmployer",
             "template": "app/resources/app/views/employer/newEmployer.html",
             "nls" : "app/resources/app/views/employer/nls/messages"
+        },
+        "newRestriction": {
+            "controller": "app/resources/app/views/restriction/newRestriction",
+            "template": "app/resources/app/views/restriction/newRestriction.html",
+            "nls" : "app/resources/app/views/restriction/nls/messages"
         }
+        
         
     }
 }
