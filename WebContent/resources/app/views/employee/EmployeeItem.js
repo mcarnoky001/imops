@@ -2,7 +2,7 @@ define([
 	"dojo/_base/declare",
 	"dojox/mobile/ListItem",
 	"dijit/_TemplatedMixin",
-	"dojo/text!./EmployerItem.html",
+	"dojo/text!./EmployeeItem.html",
 	"dojo/i18n!./nls/messages",
 	"app/resources/app/widgets/_EnsureParamsMixin",
 	"dojo/date/locale",
