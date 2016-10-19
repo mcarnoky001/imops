@@ -1,0 +1,32 @@
+<div class="claimDetail">
+	<form data-dojo-type="dijit/form/Form" data-dojo-attach-point="restrictionForm">
+		<div id="general" class="detailBody" data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'single'">
+			<div>
+				<label>${nls.restrictionType}</label>
+				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','name')"></div>
+			</div>
+		</div>
+	</form>
+
+	<div class="footer">
+		<ul data-dojo-type="dojox/mobile/TabBar" data-dojo-props='barType:"tallTab", fill:"always"'>
+			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showRelatedDlg" data-dojo-attach-point="relatedBtn">${nls.related}</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showActionsDlg" data-dojo-props="disabled:'true'" data-dojo-attach-point="actionsBtn">${nls.actions}</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:saveRestriction" data-dojo-attach-point="saveBtn">${nls.saveClaim}</li>
+		</ul>
+	</div>
+	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="relatedDialog" class="functionsDialog" data-dojo-props="closeButton:true">
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:removeRestriction" data-dojo-attach-point="removeBtn">${nls.removeRestriction}</button>
+	</div>
+	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="actionsDialog" class="functionsDialog" data-dojo-props="closeButton:true">
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:showChangeStatusDlg" data-dojo-attach-point="changeStatusBtn">${nls.changeStatus}</button>
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:showFunctionsDlg" data-dojo-attach-point="showFunctionsBtn">${nls.functions}</button>
+	</div>
+	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="changeStatusDialog" class="changeStatusDialog" data-dojo-props="closeButton:true">
+	</div>
+	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="functionsDialog" class="functionsDialog" data-dojo-props="closeButton:true">
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:createTask">${nls.createTask}</button>
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:duplicateClaim">${nls.duplicateClaim}</button>
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:changePolicy">${nls.changePolicy}</button>
+	</div>
+</div>

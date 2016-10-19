@@ -53,6 +53,8 @@ define({
 		createEmployee: "Create Employee",
 		createRestriction: "Create Restriction",
 		changeCredit: "Change Credit",
-		skillToDisable:"Skill to Disable"
+		skillToDisable:"Skill to Disable",
+		restrictionType: "Restriction Type",
+		removeRestriction: "Remove Restriction"
 	}
 });
