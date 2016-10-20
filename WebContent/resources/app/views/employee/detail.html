@@ -15,11 +15,13 @@
 			</div>
 			<div>
 				<label>${nls.employeeName}</label>
-				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','name')"></div>
+				<input class="pickerInputBox" data-dojo-type="dojox/mobile/TextBox"
+						data-dojo-props="value:at('rel:','name')" data-dojo-attach-point="nameTB" />
 			</div>
 			<div>
 				<label>${nls.employeeSurname}</label>
-				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','surname')"></div>
+				<<input class="pickerInputBox" data-dojo-type="dojox/mobile/TextBox"
+						data-dojo-props="value:at('rel:','surname')" data-dojo-attach-point="surnnameTB" />
 			</div>
 			<div>
 				<label>${nls.companyName}</label>
