@@ -15,7 +15,7 @@ define([
 		success : function(result) {
 			new TransitionEvent(this.domNode, {
 				target : "home",
-				transitionOptions: {name:result.name}
+				transitionOptions: {userInfo:result}
 			}).dispatch();
 		}
 	};

@@ -4,6 +4,11 @@ define([
 	"dojox/mobile/Button"
 ], function(TransitionEvent) {
 	return {
+		init:function(){
+			if(this.userInfo.type == "employer"){
+				domStyle(this.createNewEmployee.domNode, "display", "none");
+			}
+		},
 
 		createNewEmployer : function() {
 			new TransitionEvent(this.domNode, {
