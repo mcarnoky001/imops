@@ -46,16 +46,14 @@ define([
                 console.log(err);
             });
         },
-        login:function(name,pass){
-        	return this.db.query('login/login', {
-            	keys: [name,pass]
-                }).then(function(response) {
-                    return response.rows.map(function(item) {
-                        return item.value;
-                    });
-                }).otherwise(function(err) {
-                    console.log(err);
-                });
+        login : function(name,pass){
+            return this.db.query('login/login', {
+            	key: [name,pass]
+            }).then(function(response) {
+                 return response.rows.map(function(item) {
+                     return item.value;
+                 });
+           });
         },
         query: function(param) {
             return this.db.query('contacts/contacts', {

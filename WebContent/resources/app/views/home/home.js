@@ -4,8 +4,9 @@ define([
 	"dojox/mobile/Button"
 ], function(TransitionEvent) {
 	return {
-		init:function(){
-			if(this.userInfo.type == "employer"){
+		onBeforeTransitionIn:function(){
+		   // this.inherited(arguments);
+			if(this.params.userInfo.type == "employer"){
 				domStyle(this.createNewEmployee.domNode, "display", "none");
 			}
 		},
