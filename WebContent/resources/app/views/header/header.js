@@ -40,15 +40,7 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry) {
 		_fullyVisibleMenu : true,
 
 		init : function() {
-			//this._defineToggleWrapper();
-			//this._defineTogglerAction();
-			//this._defineDynamicMenuItems();
-			//this._recalculateMenu();
-			//this._insertDynamicMenuIntoPopupWrapper();
 			this.setEventDelegators();
-			//this._defineUserLabel();
-			//this.loadTaskOverview();
-			//buildInfo.display(dom.byId("buildInfo"));
 			this.own(topic.subscribe("task-closed", lang.hitch(this, "loadTaskOverview")));
 			this.own(topic.subscribe("show-message", lang.hitch(this, "_showMessage")));
 			this.homeBtn.on("click", lang.hitch(this, "resetSideMenuHighlight"));
@@ -125,26 +117,6 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry) {
 			//first 2 buttons are home and toggler - they should remain alwais visible
 			this.dynamicMenuItems = children.slice(2);
 		},
-		//NOT NEEDED
-		/*_recalculateMenu : function() {
-			if (this.toggler.toggled) {
-				this.toggler.emit("Click");
-			}
-
-			//if nothing changed, than do not bother
-			var menuItemsFit = this._doMenuItemsFit();
-			if (menuItemsFit == this._fullyVisibleMenu) {
-				return;
-			}
-
-			this._fullyVisibleMenu = menuItemsFit;
-			if (this._fullyVisibleMenu) {
-				this._insertDynamicMenuIntoHeader();
-			} else {
-				this._insertDynamicMenuIntoPopupWrapper();
-			}
-
-		},*/
 
 		_doMenuItemsFit : function() {
 			//can not properly calculate real width of displayed buttons, since they may be hidden in popup
@@ -170,17 +142,6 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry) {
 			this.loggedUserLabel && domConstruct.place(this.loggedUserLabel, wrapperNode, "last");
 			domConstruct.place(this.logoutButton.domNode, wrapperNode, "last");
 		},
-		// NOT NEEDED
-		/*_defineUserLabel : function() {
-			request.get(appConfig.auth.userInfo).then(lang.hitch(this, function(userInfo) {
-				var userName = encHtml(userInfo.name);
-				this.loggedUserLabel = domConstruct.create("label", {
-					"class" : "username headerLogin",
-					"innerHTML" : userName
-				}, this.logoutButton.domNode, "before");
-				domAttr.set(this.toggler.domNode, "innerHTML", userName);
-			}));
-		},*/
 
 		_formatOverviewValue : function(taskOverview) {
 			var total = taskOverview.total;
