@@ -8,9 +8,14 @@
         "dojox/app/controllers/Layout",
         "dojox/app/controllers/History"
     ],
-    "defaultView": "header+home",
+    "defaultView": "login+header",
     "defaultTransition": "slide",
     "views": {
+    	"login" : {
+    		"controller" : "app/resources/app/views/login/login",
+    		"template" : "app/resources/app/views/login/login.html",
+    		"nls" : "app/resources/app/views/login/nls/messages"
+    	},
     	"header" : {
     		"controller" : "app/resources/app/views/header/header",
     		"template" : "app/resources/app/views/header/header.html",

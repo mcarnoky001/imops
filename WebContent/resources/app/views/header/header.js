@@ -45,9 +45,11 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry) {
 			this.own(topic.subscribe("show-message", lang.hitch(this, "_showMessage")));
 			this.homeBtn.on("click", lang.hitch(this, "resetSideMenuHighlight"));
 			this.logoutBtn.on("click",lang.hitch(this,"setLogoutButton"));
-			if(this.userInfo.type == "employer"){
-				domStyle(this.employerBtn.domNode, "display", "none");
-			}
+		},
+		onBeforeTransitionIn:function(){
+		    if(this.params.userInfo.type == "employer"){
+			domStyle(this.employerBtn.domNode, "display", "none");
+		}
 		},
 		_resizeHandle : undefined,
 		beforeActivate : function() {

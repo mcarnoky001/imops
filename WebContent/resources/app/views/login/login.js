@@ -1,9 +1,13 @@
 define([
 	"dojox/mobile/TransitionEvent",
 	"../../stores/imops",
-	"xstyle/css!./home.css",
-	"dojox/mobile/Button"
-], function(TransitionEvent,imops) {
+	"dojo/when",
+	"dojo/_base/lang",
+	"gjax/error",
+	"xstyle/css!./login.css",
+	"dojox/mobile/Button",
+	"dojox/mobile/TextBox"
+], function(TransitionEvent,imops,when,lang,error) {
 	return {
 
 		login : function() {
@@ -15,7 +19,9 @@ define([
 		success : function(result) {
 			new TransitionEvent(this.domNode, {
 				target : "home",
-				transitionOptions: {userInfo:result}
+				params : {
+				    userInfo:result
+				}
 			}).dispatch();
 		}
 	};
