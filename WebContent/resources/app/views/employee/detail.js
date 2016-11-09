@@ -130,6 +130,7 @@ define([
 		showRelatedDlg : function() {
 		},
 		showActionsDlg : function() {
+			this.actionsDialog.show();
 		},
 		showDocuments : function() {
 		},
@@ -140,6 +141,12 @@ define([
 		},
 		_changeStatus : function(targetStatus) {
 			
+		},
+		changeCredit:function(){
+			this.changeCreditPick.showPicker();
+		},
+		createRestriction:function(){
+			this.createRestrictionPick.showPicker();
 		},
 
 		showChangeStatusDlg : function() {

@@ -1,0 +1,17 @@
+<div class="dateExpirationPicker detailBody">
+	<div class="mblSimpleDialogTitle">${nls.title}</div>
+	<form data-dojo-type="dijit/form/Form" data-dojo-attach-point="form">
+		<div data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'auto'">
+			<div>
+				<label>${nls.amountToAdd}</label>
+				<div>
+					<input class="pickerInputBox" data-dojo-type="dojox/mobile/TextBox" data-dojo-attach-point="amountToAddTB" />
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="footer">
+		<button type="button" data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="changeBtn" data-dojo-props="disabled:false"
+			data-dojo-attach-event="onClick: hBtnSubmitClick" class="primaryBtn">${nls.save}</button>
+	</div>
+</div>
