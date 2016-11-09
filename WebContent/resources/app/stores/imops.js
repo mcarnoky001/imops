@@ -1,7 +1,9 @@
 /*global PouchDB*/
 
 define([
-    "dojo/_base/declare"
+    "dojo/_base/declare",
+    "dojo/Deferred",
+    "dojo/promise/Promise"
 ], function(declare) {
 
     var PouchStore = declare(null, {
@@ -30,8 +32,6 @@ define([
                 return response.rows.map(function(item) {
                     return item.value;
                 });
-            }).otherwise(function(err) {
-                console.log(err);
             });
         },
         getCompanyEmployers : function(item){
@@ -42,8 +42,6 @@ define([
                 return response.rows.map(function(item) {
                     return item.value;
                 });
-            }).otherwise(function(err) {
-                console.log(err);
             });
         },
         login : function(name,pass){
