@@ -23,6 +23,7 @@ define([
 	"dojo/store/Observable",
 	"../../stores/imops",
 	"dojo/when",
+	"../employee/EmployeeItem",
 	"xstyle/css!./detail.css",
 	//
 	"dojox/mvc/Output",
@@ -39,19 +40,20 @@ define([
 	"dojox/mobile/ListItem"
 ], function(win, domConstruct, dom, Button, Uri, ModelRefController, string, lang, request, registry, error, topic,
 		 Memory, TransitionEvent, array, i18n, i18nTT, SimpleDialog, JsonRest,
-		uriBuilder, domStyle,Observable,imops,when) {
+		uriBuilder, domStyle,Observable,imops,when, EmployeeItem) {
 
 	return {
 		init : function() {
 			this.controller = new ModelRefController();
 			this.controller.bind(this.employerForm);
-			/*this.own(this.controller);
+			this.own(this.controller);
 			this.own(this.taskPane);
-			this.own(this.commentPane);*/
+			this.own(this.commentPane);
 
 			this.controller.watch("dirty", lang.hitch(this, function(prop, oldValue, newValue) {
 				this.saveBtn.set("disabled", !newValue);
 			}));
+			this.loadData();
 		},
 		initCommentPane : function(results) {
 			
@@ -96,11 +98,27 @@ define([
 		},
 
 		beforeActivate : function() {
-			when(imops.get(this.params.employeeID))
+			when(imops.get(this.params.employerID))
 	                .then((lang.hitch(this, function(result) {
 	                    this.controller.loadModelFromData(result);
 	                })).bind(this))
 	                .otherwise(error.errbackDialog);
+		},
+		loadData : function() {
+			when(imops.getCompanyEmployers(this.params.employerID)).then(lang.hitch(this, "initEmployeePane"));
+		},
+		initEmployeePane : function(results) {
+			this.taskList.set("itemRenderer", EmployeeItem);
+			this.taskStore = new Memory({
+				data : results,
+				idProperty : "code"
+			});
+			if (results.length <= 0) {
+				domStyle.set(dom.byId("dataNotFoundTas"), "display", "block");
+			} else {
+				domStyle.set(dom.byId("dataNotFoundTas"), "display", "none");
+			}
+			this.taskList.setStore(this.taskStore);
 		},
 
 

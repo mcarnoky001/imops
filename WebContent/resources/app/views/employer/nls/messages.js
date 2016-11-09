@@ -45,6 +45,8 @@ define({
 		address: "Address",
 		companyName: "Company Name",
 		createTask:"Create Task",
-		employer: "Employer"
+		employer: "Employer",
+		employees: "Employees",
+		logs: "Logs"
 	}
 });
