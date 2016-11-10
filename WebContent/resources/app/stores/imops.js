@@ -34,10 +34,10 @@ define([
                 });
             });
         },
-        getCompanyEmployers : function(item){
+        getCompanyEmployees : function(item){
             return this.db.query('company/employee', {
-        	starkey: [item,1],
-        	endkey: [item,0]
+        	startkey: [item,1],
+        	endkey: [item,1]
             }).then(function(response) {
                 return response.rows.map(function(item) {
                     return item.value;

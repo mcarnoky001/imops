@@ -8,7 +8,7 @@
 				<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showLogsTab">${nls.logs}</li>
 			</ul>
 		</div>
-		<div id="general" class="detailBody" data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'single'">
+		<div id="generalE" class="detailBody" data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'single'">
 			<div>
 				<label>${nls.employeeID}</label>
 				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','id')"></div>
@@ -20,7 +20,7 @@
 			</div>
 			<div>
 				<label>${nls.employeeSurname}</label>
-				<<input class="pickerInputBox" data-dojo-type="dojox/mobile/TextBox"
+				<input class="pickerInputBox" data-dojo-type="dojox/mobile/TextBox"
 						data-dojo-props="value:at('rel:','surname')" data-dojo-attach-point="surnnameTB" />
 			</div>
 			<div>
@@ -35,10 +35,10 @@
 				</div>
 			</div>
 			<div>
-				<label>${nls.address}</label>
-				<div>
-					<select data-dojo-type="dijit/form/ComboBox" data-dojo-attach-point="checkTypeCB" data-dojo-props="value:at('rel:','checkType')">
-						<option>3.15€</option>
+				<label>${nls.checkType}</label>
+				<select data-dojo-type="dijit/form/DataList"
+  						data-dojo-props='id:"checkDataList"'>
+      					<option>3.15€</option>
 						<option>3.20€</option>
 						<option>3.30€</option>
 						<option>3.40€</option>
@@ -48,7 +48,9 @@
 						<option>4.00€</option>
 						<option>4.20€</option>
 						<option>5.00€</option>	
-					</select>
+				</select>
+				<div>
+					<input data-dojo-type="dojox/mobile/ComboBox" data-dojo-attach-point="checkTypeCB" data-dojo-props="value:at('rel:','checkType'), list:'checkDataList'">
 				</div>
 			</div>
 			<div>
@@ -58,7 +60,7 @@
 		</div>
 	</form>
 
-	<div id="tasks" class="pane" data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="taskPane">
+	<div id="tasksE" class="pane" data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="taskPane">
 		<div>
 			<span id="dataNotFoundTas" class="dataNotFound" style="display: none">${nls.dataNotFound}</span>
 		</div>
@@ -67,7 +69,7 @@
 		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="showAllBtn" data-dojo-props="hidden:true" class="showAllBtn"
 			style="width: 100%; box-sizing: border-box;">${nls.showAll}</button>
 	</div>
-	<div id="comment" class="pane" data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="commentPane">
+	<div id="commentE" class="pane" data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="commentPane">
 		<div>
 			<span id="dataNotFoundCom" class="dataNotFound" style="display: none">${nls.dataNotFound}</span>
 		</div>

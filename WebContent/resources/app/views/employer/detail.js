@@ -53,6 +53,7 @@ define([
 			this.controller.watch("dirty", lang.hitch(this, function(prop, oldValue, newValue) {
 				this.saveBtn.set("disabled", !newValue);
 			}));
+			this.showGeneralTab();
 			this.loadData();
 		},
 		initCommentPane : function(results) {
@@ -105,7 +106,7 @@ define([
 	                .otherwise(error.errbackDialog);
 		},
 		loadData : function() {
-			when(imops.getCompanyEmployers(this.params.employerID)).then(lang.hitch(this, "initEmployeePane"));
+			when(imops.getCompanyEmployees(this.params.employerID)).then(lang.hitch(this, "initEmployeePane"));
 		},
 		initEmployeePane : function(results) {
 			this.taskList.set("itemRenderer", EmployeeItem);
@@ -159,6 +160,32 @@ define([
 			}).dispatch();
 		},
 		changeCredit: function(){		
+		},
+		showTaskTab : function() {
+			var general = dom.byId("general");
+			var task = dom.byId("tasks");
+			var comment = dom.byId("comment");
+			domStyle.set(general, "display", "none");
+			domStyle.set(task, "display", "block");
+			domStyle.set(comment, "display", "none");
+			this.taskPane.resize();
+		},
+		showGeneralTab : function() {
+			var general = dom.byId("general");
+			var task = dom.byId("tasks");
+			var comment = dom.byId("comment");
+			domStyle.set(general, "display", "block");
+			domStyle.set(task, "display", "none");
+			domStyle.set(comment, "display", "none");
+		},
+		showCommentsTab : function() {
+			var general = dom.byId("general");
+			var task = dom.byId("tasks");
+			var comment = dom.byId("comment");
+			domStyle.set(general, "display", "none");
+			domStyle.set(task, "display", "none");
+			domStyle.set(comment, "display", "block");
+			this.commentPane.resize();
 		}
 	};
 });

@@ -36,7 +36,9 @@ define([
 	"dojox/mobile/ScrollableView",
 	"dojox/mobile/ScrollablePane",
 	"dojox/mobile/EdgeToEdgeList",
-	"dojox/mobile/ListItem"
+	"dojox/mobile/ListItem",
+	"dojox/mobile/ComboBox",
+	"dijit/form/DataList"
 ], function(win, domConstruct, dom, Button, Uri, ModelRefController, string, lang, request, registry, error, topic,
 		 Memory, TransitionEvent, array, i18n, i18nTT, SimpleDialog, JsonRest,
 		uriBuilder, domStyle,Observable,imops,when) {
@@ -44,7 +46,7 @@ define([
 	return {
 		init : function() {
 			this.controller = new ModelRefController();
-			this.controller.bind(this.employerForm);
+			this.controller.bind(this.employeeForm);
 			/*this.own(this.controller);
 			this.own(this.taskPane);
 			this.own(this.commentPane);*/
@@ -52,6 +54,7 @@ define([
 			this.controller.watch("dirty", lang.hitch(this, function(prop, oldValue, newValue) {
 				this.saveBtn.set("disabled", !newValue);
 			}));
+			this.showGeneralTab();
 		},
 		initCommentPane : function(results) {
 			
@@ -69,26 +72,26 @@ define([
 			
 		},
 		showRestrictionsTab : function() {
-			var general = dom.byId("general");
-			var task = dom.byId("tasks");
-			var comment = dom.byId("comment");
+			var general = dom.byId("generalE");
+			var task = dom.byId("tasksE");
+			var comment = dom.byId("commentE");
 			domStyle.set(general, "display", "none");
 			domStyle.set(task, "display", "block");
 			domStyle.set(comment, "display", "none");
 			this.taskPane.resize();
 		},
 		showGeneralTab : function() {
-			var general = dom.byId("general");
-			var task = dom.byId("tasks");
-			var comment = dom.byId("comment");
+		    	var general = dom.byId("generalE");
+			var task = dom.byId("tasksE");
+			var comment = dom.byId("commentE");
 			domStyle.set(general, "display", "block");
 			domStyle.set(task, "display", "none");
 			domStyle.set(comment, "display", "none");
 		},
 		showLogsTab : function() {
-			var general = dom.byId("general");
-			var task = dom.byId("tasks");
-			var comment = dom.byId("comment");
+		    	var general = dom.byId("generalE");
+			var task = dom.byId("tasksE");
+			var comment = dom.byId("commentE");
 			domStyle.set(general, "display", "none");
 			domStyle.set(task, "display", "none");
 			domStyle.set(comment, "display", "block");
@@ -105,9 +108,9 @@ define([
 
 
 		saveClaim : function() {
-			if (!this.employerForm.validate()) {
+			/*if (!this.employerForm.validate()) {
 				return;
-			}
+			}*/
 			var data = this.controller.getPlainValue();
 		        when(imops.put(data)).then(lang.hitch(this, function(result){
 		            this.controller.set("_rev",result._rev);
@@ -173,5 +176,8 @@ define([
 		},
 		showConsultantPicker : function() {
 		},
+		removeEmployee:function(){
+		    
+		}
 	};
 });

@@ -54,6 +54,10 @@ define({
 		createRestriction: "Create Restriction",
 		changeCredit: "Change Credit",
 		skillToDisable:"Skill to Disable",
-		amountToAdd: "Number of checks to add"
+		amountToAdd: "Number of checks to add",
+		employeeID: "Employee ID",
+		actualCredit: "Actual Credit",
+		removeEmployee: "Remove Employee",
+		checkType: "Check Type"
 	}
 });

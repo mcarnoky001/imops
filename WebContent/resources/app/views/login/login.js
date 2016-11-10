@@ -20,7 +20,7 @@ define([
 			.otherwise(error.errbackDialog);
 		},
 		success : function(result) {
-			if(result!=null){
+			if(result.length>0){
 			new TransitionEvent(this.domNode, {
 				target : "home",
 				params : {

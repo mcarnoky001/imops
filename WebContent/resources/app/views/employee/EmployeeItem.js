@@ -43,8 +43,8 @@ define([
 
 			this.transitionOptions = {
 				params : {
-					employerID : this._id,
-					employerREV : this._rev
+					employeeID : this._id,
+					employeeREV : this._rev
 				}
 			};
 		}
