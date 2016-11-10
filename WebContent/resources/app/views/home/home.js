@@ -7,7 +7,7 @@ define([
 		onBeforeTransitionIn:function(){
 		   // this.inherited(arguments);
 			if(this.params.userInfo.type == "employer"){
-				domStyle(this.createNewEmployee.domNode, "display", "none");
+				domStyle(this.createNewEmployer.domNode, "display", "none");
 			}
 		},
 

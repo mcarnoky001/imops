@@ -8,7 +8,7 @@
 				<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showLogsTab">${nls.logs}</li>
 			</ul>
 		</div>
-		<div id="generalE" class="detailBody" data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'single'">
+		<div data-dojo-attach-point="generalPane" class="detailBody" data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'single'">
 			<div>
 				<label>${nls.employeeID}</label>
 				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','id')"></div>
@@ -60,7 +60,7 @@
 		</div>
 	</form>
 
-	<div id="tasksE" class="pane" data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="taskPane">
+	<div class="pane" data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="taskPane">
 		<div>
 			<span id="dataNotFoundTas" class="dataNotFound" style="display: none">${nls.dataNotFound}</span>
 		</div>
@@ -69,7 +69,7 @@
 		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="showAllBtn" data-dojo-props="hidden:true" class="showAllBtn"
 			style="width: 100%; box-sizing: border-box;">${nls.showAll}</button>
 	</div>
-	<div id="commentE" class="pane" data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="commentPane">
+	<div class="pane" data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="commentPane">
 		<div>
 			<span id="dataNotFoundCom" class="dataNotFound" style="display: none">${nls.dataNotFound}</span>
 		</div>

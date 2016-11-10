@@ -72,26 +72,26 @@ define([
 			
 		},
 		showRestrictionsTab : function() {
-			var general = dom.byId("generalE");
-			var task = dom.byId("tasksE");
-			var comment = dom.byId("commentE");
+			var general = this.generalTab.domNode;
+			var task = this.taskTab.domNode;
+			var comment = this.commentTab.domNode;
 			domStyle.set(general, "display", "none");
 			domStyle.set(task, "display", "block");
 			domStyle.set(comment, "display", "none");
 			this.taskPane.resize();
 		},
 		showGeneralTab : function() {
-		    	var general = dom.byId("generalE");
-			var task = dom.byId("tasksE");
-			var comment = dom.byId("commentE");
+		    var general = this.generalTab.domNode;
+			var task = this.taskTab.domNode;
+			var comment = this.commentTab.domNode;
 			domStyle.set(general, "display", "block");
 			domStyle.set(task, "display", "none");
 			domStyle.set(comment, "display", "none");
 		},
 		showLogsTab : function() {
-		    	var general = dom.byId("generalE");
-			var task = dom.byId("tasksE");
-			var comment = dom.byId("commentE");
+		    var general = this.generalTab.domNode;
+			var task = this.taskTab.domNode;
+			var comment = this.commentTab.domNode;
 			domStyle.set(general, "display", "none");
 			domStyle.set(task, "display", "none");
 			domStyle.set(comment, "display", "block");
