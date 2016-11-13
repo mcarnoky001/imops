@@ -9,10 +9,6 @@ define([
 	"dojox/mobile/TextBox"
 ], function(TransitionEvent,imops,when,lang,error) {
 	return {
-		init:function(){
-			
-			
-		},
 		login : function() {
 			 when(imops.login(this.nameTB.get("value"),this.passTB.get("value"))).then(lang.hitch(this, function(result){
 		            this.success(result);
@@ -20,13 +16,14 @@ define([
 			.otherwise(error.errbackDialog);
 		},
 		success : function(result) {
-			if(result.length>0){
-			new TransitionEvent(this.domNode, {
+			if(result.length > 0){
+			    new TransitionEvent(this.domNode, {
 				target : "home",
 				params : {
-				    userInfo:result
+				    accountType:result[0].accountType,
+				    companyID:result[0].companyID
 				}
-			}).dispatch();
+			    }).dispatch();
 			}
 			else{
 				error.errbackDialog;

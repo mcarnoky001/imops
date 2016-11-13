@@ -22,6 +22,7 @@ define([
 	"dojo/_base/fx",
 	"dojo/html",
 	"dijit/registry",
+	"dojox/mobile/TransitionEvent",
 	//UI
 	"dojox/mobile/Heading",
 	"dojox/mobile/ToolBarButton",
@@ -32,7 +33,7 @@ define([
 	"app/libs/sidepane/SidePane",
 	"dojo/NodeList-dom"
 ], function(i18n, query, array, domClass, throttle, on, lang, domConstruct, aspect, Button, request, dom,encHtml,// 
-domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry) {
+domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, TransitionEvent) {
 
 	var SAVE_MESSAGE_DURATION = 4000;
 
@@ -46,15 +47,13 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry) {
 			this.homeBtn.on("click", lang.hitch(this, "resetSideMenuHighlight"));
 			this.logoutBtn.on("click",lang.hitch(this,"setLogoutButton"));
 		},
-		onBeforeTransitionIn:function(){
-		    if(this.params.userInfo.type == "employer"){
-			domStyle(this.employerBtn.domNode, "display", "none");
-		}
-		},
 		_resizeHandle : undefined,
-		beforeActivate : function() {
+		beforeActivate : function(previousView, data) {
 			this._resizeHandle && this._resizeHandle.remove();
 			//this._resizeHandle = this.own(on(window, "resize", throttle(lang.hitch(this, this._recalculateMenu), 100)))[0];
+			if(this.params.accountType =="employer"){
+				domStyle.set(this.employerBtn.domNode, "display", "none");
+		    	    }
 		},
 		setLogoutButton:function(){
 			/*request(appConfig.auth.logoutSvc, {
@@ -207,6 +206,14 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry) {
 				this.sidePane.open();
 
 			}
+		},
+		showEmployeeList: function(){
+		    new TransitionEvent(this.domNode, {
+			target : "employeeList",
+			params : {
+			    companyID:this.params.companyID
+			}
+		}).dispatch();
 		}
 	};
 });

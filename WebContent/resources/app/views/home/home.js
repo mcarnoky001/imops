@@ -1,15 +1,24 @@
 define([
 	"dojox/mobile/TransitionEvent",
+	"dojo/_base/connect",
+	"dojo/dom-style",
+	"dojo/dom",
 	"xstyle/css!./home.css",
 	"dojox/mobile/Button"
-], function(TransitionEvent) {
+], function(TransitionEvent,connect,domStyle,dom) {
 	return {
-		onBeforeTransitionIn:function(){
-		   // this.inherited(arguments);
-			if(this.params.userInfo.type == "employer"){
-				domStyle(this.createNewEmployer.domNode, "display", "none");
+	    	beforeActivate:function(previousView, data){
+	    	    if(this.params.accountType =="employer"){
+		    domStyle.set(this.createNewEmployer.domNode, "display", "none");
+		    new TransitionEvent(this.domNode, {
+			target : "header",
+			params : {
+			    accountType:this.params.accountType,
+			    companyID: this.params.companyID
 			}
-		},
+		}).dispatch();
+	    	    }
+	    	},
 
 		createNewEmployer : function() {
 			new TransitionEvent(this.domNode, {
