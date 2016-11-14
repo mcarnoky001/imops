@@ -55,6 +55,7 @@ define({
 		changeCredit: "Change Credit",
 		skillToDisable:"Skill to Disable",
 		restrictionType: "Restriction Type",
-		removeRestriction: "Remove Restriction"
+		removeRestriction: "Remove Restriction",
+		remove:"Remove"
 	}
 });

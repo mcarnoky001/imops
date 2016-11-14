@@ -44,7 +44,7 @@ dialog, i18n, when, TransitionEvent) {
 			if (!this.employeeForm.validate()) {
 				return;
 			}
-
+			this.controller.set("restrictions",[]);
 			var data = this.controller.getPlainValue();
 		        when(imops.add(data))
 		                .then((lang.hitch(this, function(updatedResult) {

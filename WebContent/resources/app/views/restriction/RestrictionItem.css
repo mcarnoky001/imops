@@ -1,0 +1,13 @@
+taskItem .closeTaskLeft, .taskItem .closeTaskRight {
+	width: 65px;
+	position: absolute;
+	line-height: 43px;
+}
+
+.taskItem .closeTaskLeft {
+	left: -70px;
+}
+
+.taskItem .closeTaskRight {
+	right: -73px; /*additional 3px serve as padding*/
+}

@@ -25,6 +25,7 @@ define([
 	"dojo/when",
 	"./creditChangePicker",
 	"./restrictionAddPicker",
+	"../restriction/RestrictionItem",
 	//
 	"xstyle/css!./detail.css",
 	"dojox/mvc/Output",
@@ -41,9 +42,8 @@ define([
 	"dojox/mobile/ListItem",
 	"dojox/mobile/ComboBox",
 	"dijit/form/DataList"
-], function(win, domConstruct, dom, Button, Uri, ModelRefController, string, lang, request, registry, error, topic,
-		 Memory, TransitionEvent, array, i18n, i18nTT, SimpleDialog, JsonRest,
-		uriBuilder, domStyle,Observable,imops,when, creditChangePicker, restrictionAddPicker) {
+], function(win, domConstruct, dom, Button, Uri, ModelRefController, string, lang, request, registry, error, topic, Memory, TransitionEvent, array, i18n,
+		i18nTT, SimpleDialog, JsonRest, uriBuilder, domStyle, Observable, imops, when, creditChangePicker, restrictionAddPicker, RestrictionItem) {
 
 	return {
 		init : function() {
@@ -57,24 +57,42 @@ define([
 				this.saveBtn.set("disabled", !newValue);
 			}));
 			this.showGeneralTab();
+			this.restrictionList.on("close-task", lang.hitch(this, function(evt) {
+				//evt.task  
+				var array = this.controller.get("restrictions").filter(function(item){
+					return item.category != evt.category;
+				});
+				this.controller.set("restrictions",array);
+			}));
 		},
+
 		initCommentPane : function(results) {
-			
+
 		},
 		addComment : function() {
-			
+
 		},
 		showNewComment : function() {
-			
+
 		},
 		saveComment : function() {
-			
+
 		},
-		initTaskPane : function(results) {
-			
+		initRestrictionPane : function(results) {
+			this.restrictionList.set("itemRenderer", RestrictionItem);
+			this.taskStore = new Memory({
+				data : results.restrictions,
+				idProperty : "category"
+			});
+			if (results.length <= 0) {
+				domStyle.set(dom.byId("dataNotFoundTas"), "display", "block");
+			} else {
+				domStyle.set(dom.byId("dataNotFoundTas"), "display", "none");
+			}
+			this.restrictionList.setStore(this.taskStore);
 		},
 		showRestrictionsTab : function() {
-		    var general = this.generalPane.domNode;
+			var general = this.generalPane.domNode;
 			var task = this.taskPane.domNode;
 			var comment = this.commentPane.domNode;
 			domStyle.set(general, "display", "none");
@@ -83,7 +101,7 @@ define([
 			this.taskPane.resize();
 		},
 		showGeneralTab : function() {
-		    var general = this.generalPane.domNode;
+			var general = this.generalPane.domNode;
 			var task = this.taskPane.domNode;
 			var comment = this.commentPane.domNode;
 			domStyle.set(general, "display", "block");
@@ -91,7 +109,7 @@ define([
 			domStyle.set(comment, "display", "none");
 		},
 		showLogsTab : function() {
-		    var general = this.generalPane.domNode;
+			var general = this.generalPane.domNode;
 			var task = this.taskPane.domNode;
 			var comment = this.commentPane.domNode;
 			domStyle.set(general, "display", "none");
@@ -101,23 +119,21 @@ define([
 		},
 
 		beforeActivate : function() {
-			when(imops.get(this.params.employeeID))
-	                .then((lang.hitch(this, function(result) {
-	                    this.controller.loadModelFromData(result);
-	                })).bind(this))
-	                .otherwise(error.errbackDialog);
+			when(imops.get(this.params.employeeID)).then((lang.hitch(this, function(result) {
+				this.controller.loadModelFromData(result);
+				this.initRestrictionPane(result);
+			})).bind(this)).otherwise(error.errbackDialog);
 		},
-
 
 		saveClaim : function() {
 			/*if (!this.employerForm.validate()) {
 				return;
 			}*/
 			var data = this.controller.getPlainValue();
-		        when(imops.put(data)).then(lang.hitch(this, function(result){
-		            this.controller.set("_rev",result._rev);
-		            this._saveSuccess();
-		        }))//
+			when(imops.put(data)).then(lang.hitch(this, function(result) {
+				this.controller.set("_rev", result._rev);
+				this._saveSuccess();
+			}))//
 			.otherwise(error.errbackDialog);
 		},
 
@@ -141,19 +157,18 @@ define([
 		},
 
 		initChangeStatusDlg : function() {
-			
-			
+
 		},
 		_changeStatus : function(targetStatus) {
-			
+
 		},
-		changeCredit:function(){
+		changeCredit : function() {
 			this._picker = new this.changeCreditPicker();
 			this._picker.startup(this.params.employeeID);
 			this._picker.show();
 			this.own(this._picker);
 		},
-		createRestriction:function(){
+		createRestriction : function() {
 			this._picker = new this.restrictionAddPicker();
 			this._picker.startup(this.params.employeeID);
 			this._picker.show();
@@ -164,28 +179,28 @@ define([
 		},
 
 		createTask : function() {
-			
+
 		},
 		duplicateClaim : function() {
-			
+
 		},
 		changePolicy : function() {
-			
+
 		},
 		showDuplicateConfirmDialog : function() {
 
 		},
 		duplicateProceed : function(simpleDlg) {
-			
+
 		},
 
 		_goToClaimDetail : function(claim) {
-			
+
 		},
 		showConsultantPicker : function() {
 		},
-		removeEmployee:function(){
-		    
+		removeEmployee : function() {
+
 		}
 	};
 });
