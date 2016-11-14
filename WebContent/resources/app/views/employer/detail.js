@@ -162,26 +162,26 @@ define([
 		changeCredit: function(){		
 		},
 		showTaskTab : function() {
-			var general = this.generalTab.domNode;
-			var task = this.taskTab.domNode;
-			var comment = this.commentTab.domNode;
+			var general = this.generalPane.domNode;
+			var task = this.taskPane.domNode;
+			var comment = this.commentPane.domNode;
 			domStyle.set(general, "display", "none");
 			domStyle.set(task, "display", "block");
 			domStyle.set(comment, "display", "none");
 			this.taskPane.resize();
 		},
 		showGeneralTab : function() {
-		    var general = this.generalTab.domNode;
-			var task = this.taskTab.domNode;
-			var comment = this.commentTab.domNode;
+		    var general = this.generalPane.domNode;
+			var task = this.taskPane.domNode;
+			var comment = this.commentPane.domNode;
 			domStyle.set(general, "display", "block");
 			domStyle.set(task, "display", "none");
 			domStyle.set(comment, "display", "none");
 		},
 		showCommentsTab : function() {
-		    var general = this.generalTab.domNode;
-			var task = this.taskTab.domNode;
-			var comment = this.commentTab.domNode;
+		    var general = this.generalPane.domNode;
+			var task = this.taskPane.domNode;
+			var comment = this.commentPane.domNode;
 			domStyle.set(general, "display", "none");
 			domStyle.set(task, "display", "none");
 			domStyle.set(comment, "display", "block");

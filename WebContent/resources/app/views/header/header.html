@@ -7,8 +7,8 @@
 		</h1>
 		<div data-dojo-type="dojox/mobile/ScrollableView" class="SWHidden" data-dojo-attach-point="scrollViewSW" style="height: 100%">
 			<ul data-dojo-type="dojox/mobile/EdgeToEdgeList" class="scrollList" style="height: 100%;">
-				<button id="employerBtn" class="headIcon contact" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="employerBtn" data-dojo-props="target:'employerList'">${nls.employer}</button>
-				<button id="employeeBtn" class="headIcon policies" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="employeeBtn" data-dojo-props="target:'employeeList'">${nls.employee}</button>
+				<button id="employerBtn" class="headIcon contact" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="employerBtn"  data-dojo-props="target:'employerList'">${nls.employer}</button>
+				<button id="employeeBtn" class="headIcon policies" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="employeeBtn" data-dojo-attach-event="click:showEmployeeList">${nls.employee}</button>
 			</ul>
 			<div>
 				<button class="headIcon logout" data-dojo-type="dojox/mobile/ToolBarButton" data-dojo-attach-point="logoutBtn">${nls.logout}</button>

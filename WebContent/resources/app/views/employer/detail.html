@@ -8,7 +8,7 @@
 				<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showCommentsTab">${nls.logs}</li>
 			</ul>
 		</div>
-		<div class="detailBody" data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'single'">
+		<div class="detailBody" data-dojo-attach-point="generalPane" data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'single'">
 			<div>
 				<label>${nls.companyName}</label>
 				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','name')"></div>
@@ -63,17 +63,17 @@
 		</ul>
 	</div>
 	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="relatedDialog" class="functionsDialog" data-dojo-props="closeButton:true">
-		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:showDocuments" data-dojo-attach-point="documentsBtn">${nls.documents}</button>
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="documentsBtn">${nls.documents}</button>
 	</div>
 	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="actionsDialog" class="functionsDialog" data-dojo-props="closeButton:true">
-		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:showChangeStatusDlg" data-dojo-attach-point="changeStatusBtn">${nls.changeStatus}</button>
-		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:showFunctionsDlg" data-dojo-attach-point="showFunctionsBtn">${nls.functions}</button>
+		<button data-dojo-type="dojox/mobile/Button"  data-dojo-attach-point="changeStatusBtn">${nls.changeStatus}</button>
+		<button data-dojo-type="dojox/mobile/Button"  data-dojo-attach-point="showFunctionsBtn">${nls.functions}</button>
 	</div>
 	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="changeStatusDialog" class="changeStatusDialog" data-dojo-props="closeButton:true">
 	</div>
 	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="functionsDialog" class="functionsDialog" data-dojo-props="closeButton:true">
-		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:createTask">${nls.createTask}</button>
-		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:duplicateClaim">${nls.duplicateClaim}</button>
-		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:changePolicy">${nls.changePolicy}</button>
+		<button data-dojo-type="dojox/mobile/Button" >${nls.createTask}</button>
+		<button data-dojo-type="dojox/mobile/Button" >${nls.duplicateClaim}</button>
+		<button data-dojo-type="dojox/mobile/Button">${nls.changePolicy}</button>
 	</div>
 </div>

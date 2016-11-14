@@ -28,7 +28,7 @@ define([
 			]));
 		},
 		initialize: function(){
-		    when(imops.getCompanyEmployers(this.companyID)).then(lang.hitch(this,function(result){
+		    when(imops.getCompanyEmployees(this.params.companyID)).then(lang.hitch(this,function(result){
 			this.store = result;
 			this.search(null, true);
 		    }))

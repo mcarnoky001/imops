@@ -58,6 +58,7 @@ define({
 		employeeID: "Employee ID",
 		actualCredit: "Actual Credit",
 		removeEmployee: "Remove Employee",
-		checkType: "Check Type"
+		checkType: "Check Type",
+		companyID:"Company ID"
 	}
 });
