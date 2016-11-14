@@ -147,6 +147,10 @@ define([
 		},
 		changeCredit:function(){
 			this.changeCreditPick.showPicker();
+			this._picker = new this.changeCreditPick();
+			this._picker.startup();
+			this._picker.show();
+			this.own(this._picker);
 		},
 		createRestriction:function(){
 			this.createRestrictionPick.showPicker();

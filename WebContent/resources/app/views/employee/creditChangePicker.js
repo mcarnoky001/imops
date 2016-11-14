@@ -71,14 +71,13 @@ define([
 		hBtnSubmitClick : function() {
 			if (this.form.validate()) {
 				var methodType = "PUT";
-				var date = this.DateTextBox.get("value");
-				var serviceMapping = string.substitute(this._svcLimitType, [
-					this.policyNumber
-				], sh.encode);
-
-				sh.makeRequest(methodType, serviceMapping, {
-					executionTime : date
-				}, lang.hitch(this, this._success), error.errbackDialog);
+				var number = this.amountToAddTB.get("value");
+				var data = this.controller.getPlainValue();
+		        when(imops.put(data)).then(lang.hitch(this, function(result){
+		            this.controller.set("_rev",result._rev);
+		            this._saveSuccess();
+		        }))//
+			.otherwise(error.errbackDialog);
 			}
 		},
 		_success : function() {
