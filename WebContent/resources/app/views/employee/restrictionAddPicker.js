@@ -3,7 +3,7 @@ define([
 	"dojox/mobile/SimpleDialog",
 	"dijit/_TemplatedMixin",
 	"dijit/_WidgetsInTemplateMixin",
-	"dojo/text!./creditChangePicker.html",
+	"dojo/text!./restrictionAddPicker.html",
 	"dojo/i18n!./nls/messages",
 	"dojo/store/Memory",
 	"dojo/_base/lang",
@@ -20,13 +20,14 @@ define([
 	"../../stores/imops",
 //
 	"dojox/mobile/TextBox",
+	"dojox/mobile/Switch",
 	"dojox/mobile/ScrollablePane",
 	"dojox/mobile/EdgeToEdgeStoreList",
 	"dojox/mobile/LongListMixin",
 	"dojox/mobile/Button",
 	"dojox/form/DateTextBox",
 	"dijit/form/Form",
-	"xstyle/css!./creditChangePicker.css"
+	"xstyle/css!./restrictionAddPicker.css"
 ], function(declare, SimpleDialog, _TemplatedMixin, _WidgetsInTemplateMixin, template,i18n, Memory, lang, debounce, error, when, whitelistMixin,uriBuilder,Uri,sh,string, request,dialog,tdi,imops) {
 
 	return declare([
@@ -71,26 +72,35 @@ define([
 		},
 		hBtnSubmitClick : function() {
 			if (this.form.validate()) {
-				var number;
-				if(this.amountToAddTB.get("value") != null){
-				number = parseFloat(this.amountToAddTB.get("value"));
+				if(this.controller.get("restrictions") == null){
+					this.controller.set("restrictions",[]);
 				}
-				else{
-					return;
-				}
-				var count = parseFloat(this.controller.get("checkType").slice(0,-1));
-				var result = number * count;
-				this.controller.set("credit",result);
+				this.controller.get("restrictions").forEach(function(item) {
+					if(item.category == this.restrCatCB.get("value") ){
+						this._error();
+						return;
+					}
+				});
+				var restriction = {category:this.restrCatCB.get("value"),status:this.restrStatusSw.get("value")};
+				this.controller.get("restrictions").push(restriction);
 				var data = this.controller.getPlainValue();
 		        when(imops.put(data)).then(lang.hitch(this, function(result){
 		            this.controller.set("_rev",result._rev);
 		            this._saveSuccess();
+		            this.restrCatCB.set("value","");
+		            this.restrStatusSw.set("value","");
 		        }))//
 			.otherwise(error.errbackDialog);
 			}
 		},
 		_success : function() {
 			dialog.success(i18n.info, i18n.message).then(lang.hitch(this, function() {
+				tdi.reloadScreen();
+			}));
+			this.hide();
+		},
+		_error : function(){
+			dialog.error(i18n.error, i18n.errorMessage).then(lang.hitch(this, function() {
 				tdi.reloadScreen();
 			}));
 			this.hide();

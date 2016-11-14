@@ -59,6 +59,11 @@ define({
 		actualCredit: "Actual Credit",
 		removeEmployee: "Remove Employee",
 		checkType: "Check Type",
-		companyID:"Company ID"
+		companyID:"Company ID",
+		restrictionCategory: "Restriction Category",
+		status: "Status",
+		error : "Error",
+		message : "Employee detail has been sucessfully changed.",
+		errorMessage: "The same type of restriction is already defined"
 	}
 });

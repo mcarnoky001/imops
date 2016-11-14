@@ -23,8 +23,10 @@ define([
 	"dojo/store/Observable",
 	"../../stores/imops",
 	"dojo/when",
-	"xstyle/css!./detail.css",
+	"./creditChangePicker",
+	"./restrictionAddPicker",
 	//
+	"xstyle/css!./detail.css",
 	"dojox/mvc/Output",
 	"dojox/mobile/LongListMixin",
 	"dojox/mobile/FormLayout",
@@ -41,7 +43,7 @@ define([
 	"dijit/form/DataList"
 ], function(win, domConstruct, dom, Button, Uri, ModelRefController, string, lang, request, registry, error, topic,
 		 Memory, TransitionEvent, array, i18n, i18nTT, SimpleDialog, JsonRest,
-		uriBuilder, domStyle,Observable,imops,when) {
+		uriBuilder, domStyle,Observable,imops,when, creditChangePicker, restrictionAddPicker) {
 
 	return {
 		init : function() {
@@ -146,14 +148,16 @@ define([
 			
 		},
 		changeCredit:function(){
-			this.changeCreditPick.showPicker();
-			this._picker = new this.changeCreditPick();
-			this._picker.startup();
+			this._picker = new this.changeCreditPicker();
+			this._picker.startup(this.params.employeeID);
 			this._picker.show();
 			this.own(this._picker);
 		},
 		createRestriction:function(){
-			this.createRestrictionPick.showPicker();
+			this._picker = new this.restrictionAddPicker();
+			this._picker.startup(this.params.employeeID);
+			this._picker.show();
+			this.own(this._picker);
 		},
 
 		showChangeStatusDlg : function() {
