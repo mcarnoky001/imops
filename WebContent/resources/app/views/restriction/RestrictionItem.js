@@ -2,16 +2,23 @@ define([
 	"dojo/_base/declare",
 	"dojox/mobile/ListItem",
 	"dijit/_TemplatedMixin",
+	"dojox/mobile/_ScrollableMixin",
 	"dojo/text!./RestrictionItem.html",
 	"dojo/i18n!./nls/messages",
 	"app/resources/app/widgets/_EnsureParamsMixin",
 	"dojo/date/locale",
-	"dojo/date/stamp"
-], function(declare, ListItem, _TemplatedMixin, template, i18n, _EnsureParamsMixin, locale, stamp) {
+	"dojo/date/stamp",
+	"dojo/on",
+	"dojo/touch",
+	"dojo/_base/lang",
+	"xstyle/css!./RestrictionItem.css",
+			
+], function(declare, ListItem, _TemplatedMixin,_ScrollableMixin, template, i18n, _EnsureParamsMixin, locale, stamp,on,touch, lang) {
 	var CLOSE_TRESHOLD = 80;
 	return declare([
 		ListItem,
 		_TemplatedMixin,
+		_ScrollableMixin,
 		_EnsureParamsMixin
 	], {
 
@@ -21,8 +28,7 @@ define([
 		scrollDir : "h",
 		height : "43px",
 
-		clickable : true,
-		target : "restrictionDetail",
+		clickable : false,
 
 		templateProps : [
 			"category",

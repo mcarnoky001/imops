@@ -1,13 +1,24 @@
-taskItem .closeTaskLeft, .taskItem .closeTaskRight {
+.taskItem {
+	padding-top: 1px;
+	line-height: 21px;
+	font-weight: normal;
+	overflow: visible;
+}
+
+.taskItem.dueToday .dueDate {
+	color: orange;
+}
+
+.taskItem .closeTaskLeft, .taskItem .closeTaskRight {
 	width: 65px;
 	position: absolute;
 	line-height: 43px;
 }
 
 .taskItem .closeTaskLeft {
-	left: -70px;
+	left: -80px;
 }
 
 .taskItem .closeTaskRight {
-	right: -73px; /*additional 3px serve as padding*/
+	right: -83px; /*additional 3px serve as padding*/
 }

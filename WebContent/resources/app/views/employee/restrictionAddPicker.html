@@ -1,28 +1,24 @@
 <div class="dateExpirationPicker detailBody">
-	<div class="mblSimpleDialogTitle">${nls.title}</div>
+	<div class="mblSimpleDialogTitle">${nls.titleRestr}</div>
 	<form data-dojo-type="dijit/form/Form" data-dojo-attach-point="form">
 		<div data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'auto'">
 			<div>
-				<label>${nls.RestrictionCategory}</label>
+				<label>${nls.restrictionCategory}</label>
 				<select data-dojo-type="dijit/form/DataList"
-  						data-dojo-props='id:"checkDataList"'>
+  						data-dojo-props='id:"checkDataList2"'>
       					<option>Alcohol</option>
 						<option>Tabacco</option>
 						<option>Chemists</option>
-						<option>Lactose Products</option>
-						<option>Gluten Products</option>
-						<option>Meat Products</option>
+						<option>Lactose-Products</option>
+						<option>Gluten-Products</option>
+						<option>Meat-Products</option>
 						<option>Nuts</option>
 						<option>Seafood</option>
 						<option>Fuel</option>
 				</select>
 				<div>
-					<input data-dojo-type="dojox/mobile/ComboBox" required="true"  data-dojo-attach-point="restrCatCB" data-dojo-props="list:'checkDataList'">
+					<input data-dojo-type="dojox/mobile/ComboBox" required="true"  data-dojo-attach-point="restrCatCB" data-dojo-props="list:'checkDataList2'">
 				</div>
-			</div>
-			<div>
-				<label>${nls.status}</label>
-				<div data-dojo-type="dojox/mobile/Switch" required="true" value="on" leftLabel="Enable" rightLabel="Disable" data-dojo-attach-point="restrStatusSw"></div>
 			</div>
 		</div>
 	</form>

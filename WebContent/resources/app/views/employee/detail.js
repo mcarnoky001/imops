@@ -57,12 +57,17 @@ define([
 				this.saveBtn.set("disabled", !newValue);
 			}));
 			this.showGeneralTab();
-			this.restrictionList.on("close-task", lang.hitch(this, function(evt) {
-				//evt.task  
-				var array = this.controller.get("restrictions").filter(function(item){
-					return item.category != evt.category;
-				});
+			this.restrictionList.on("close-task", lang.hitch(this, function(evt) { 
+				var array = this.controller.get("restrictions");
+				var index = 0;
+				for(var i= 0;i<array.length;i++){
+				    if(array[i].category == evt.category){
+					index = i;
+				    }
+				}
+				array.splice(index, 1);
 				this.controller.set("restrictions",array);
+				this.restrictionList.removeChild(index);
 			}));
 		},
 
@@ -163,13 +168,13 @@ define([
 
 		},
 		changeCredit : function() {
-			this._picker = new this.changeCreditPicker();
+			this._picker = new creditChangePicker();
 			this._picker.startup(this.params.employeeID);
 			this._picker.show();
 			this.own(this._picker);
 		},
 		createRestriction : function() {
-			this._picker = new this.restrictionAddPicker();
+			this._picker = new restrictionAddPicker();
 			this._picker.startup(this.params.employeeID);
 			this._picker.show();
 			this.own(this._picker);

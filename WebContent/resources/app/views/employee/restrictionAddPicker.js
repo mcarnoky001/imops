@@ -9,6 +9,7 @@ define([
 	"dojo/_base/lang",
 	"dojo/debounce",
 	"gjax/error",
+	"dojo/topic",
 	"dojo/when",
 	"gjax/lang/whitelistMixin",
 	"gjax/uri/builder",
@@ -18,6 +19,7 @@ define([
 	"gjax/dialog",
 	"gjax/tdi",
 	"../../stores/imops",
+	"gjax/mvc/ModelRefController",
 //
 	"dojox/mobile/TextBox",
 	"dojox/mobile/Switch",
@@ -28,7 +30,7 @@ define([
 	"dojox/form/DateTextBox",
 	"dijit/form/Form",
 	"xstyle/css!./restrictionAddPicker.css"
-], function(declare, SimpleDialog, _TemplatedMixin, _WidgetsInTemplateMixin, template,i18n, Memory, lang, debounce, error, when, whitelistMixin,uriBuilder,Uri,sh,string, request,dialog,tdi,imops) {
+], function(declare, SimpleDialog, _TemplatedMixin, _WidgetsInTemplateMixin, template,i18n, Memory, lang, debounce, error, topic,when, whitelistMixin,uriBuilder,Uri,string, request,dialog,tdi, imops ,ModelRefController) {
 
 	return declare([
 		SimpleDialog,
@@ -37,7 +39,7 @@ define([
 	], {
 		templateString : template,
 		
-		//title : i18n.title,
+		title : i18n.titleRestr,
 
 		closeButton : true,
 
@@ -50,38 +52,33 @@ define([
 			if (this._started) {
 				return;
 			}
-			this.employeeID= employeeID;
+			this.employeeID = employeeID;
 			this.inherited(arguments);
-			this.own(this.amountToAddTB);
-			this._init();
 		},
-		_init : function() {
+		getData : function() {
 			this.controller = new ModelRefController();
-			when(imops.get(this.employeeID))
-            .then((lang.hitch(this, function(result) {
-                this.controller.loadModelFromData(result);
-            })).bind(this))
-            .otherwise(error.errbackDialog);
+			when(imops.get(this.employeeID)).then(lang.hitch(this, function(result) {
+			    this.controller.loadModelFromData(result);
+			}))
 		},
 
 		show : function() {
+		   
 			this.inherited(arguments);
-			if (!this.cacheStore) {
-				//this.search();
-			}
+			this.getData();
 		},
 		hBtnSubmitClick : function() {
 			if (this.form.validate()) {
 				if(this.controller.get("restrictions") == null){
 					this.controller.set("restrictions",[]);
 				}
-				this.controller.get("restrictions").forEach(function(item) {
+				this.controller.get("restrictions").forEach(lang.hitch(this,function(item) {
 					if(item.category == this.restrCatCB.get("value") ){
 						this._error();
 						return;
 					}
-				});
-				var restriction = {category:this.restrCatCB.get("value"),status:this.restrStatusSw.get("value")};
+				}));
+				var restriction = {category:this.restrCatCB.get("value"),status:"ON"};
 				this.controller.get("restrictions").push(restriction);
 				var data = this.controller.getPlainValue();
 		        when(imops.put(data)).then(lang.hitch(this, function(result){
@@ -93,11 +90,11 @@ define([
 			.otherwise(error.errbackDialog);
 			}
 		},
-		_success : function() {
-			dialog.success(i18n.info, i18n.message).then(lang.hitch(this, function() {
-				tdi.reloadScreen();
-			}));
-			this.hide();
+		_saveSuccess : function() {
+			topic.publish("show-message", {
+				type : "success",
+				message : this.nls.saveSuccessful
+			});
 		},
 		_error : function(){
 			dialog.error(i18n.error, i18n.errorMessage).then(lang.hitch(this, function() {

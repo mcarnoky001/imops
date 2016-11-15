@@ -18,6 +18,8 @@ define([
 	"gjax/dialog",
 	"gjax/tdi",
 	"../../stores/imops",
+	"gjax/mvc/ModelRefController",
+	"dojo/topic",
 //
 	"dojox/mobile/TextBox",
 	"dojox/mobile/ScrollablePane",
@@ -27,7 +29,7 @@ define([
 	"dojox/form/DateTextBox",
 	"dijit/form/Form",
 	"xstyle/css!./creditChangePicker.css"
-], function(declare, SimpleDialog, _TemplatedMixin, _WidgetsInTemplateMixin, template,i18n, Memory, lang, debounce, error, when, whitelistMixin,uriBuilder,Uri,sh,string, request,dialog,tdi,imops) {
+], function(declare, SimpleDialog, _TemplatedMixin, _WidgetsInTemplateMixin, template,i18n, Memory, lang, debounce, error, when, whitelistMixin,uriBuilder,Uri,string, request,dialog,tdi,imops,ModelRefController,topic) {
 
 	return declare([
 		SimpleDialog,
@@ -36,7 +38,7 @@ define([
 	], {
 		templateString : template,
 		
-		//title : i18n.title,
+		title : i18n.titleCred,
 
 		closeButton : true,
 
@@ -79,7 +81,7 @@ define([
 					return;
 				}
 				var count = parseFloat(this.controller.get("checkType").slice(0,-1));
-				var result = number * count;
+				var result = (number * count)+parseFloat(this.controller.get("credit"));
 				this.controller.set("credit",result);
 				var data = this.controller.getPlainValue();
 		        when(imops.put(data)).then(lang.hitch(this, function(result){
@@ -89,11 +91,11 @@ define([
 			.otherwise(error.errbackDialog);
 			}
 		},
-		_success : function() {
-			dialog.success(i18n.info, i18n.message).then(lang.hitch(this, function() {
-				tdi.reloadScreen();
-			}));
-			this.hide();
+		_saveSuccess : function() {
+			topic.publish("show-message", {
+				type : "success",
+				message : this.nls.saveSuccessful
+			});
 		}
 
 	});

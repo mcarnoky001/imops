@@ -64,6 +64,9 @@ define({
 		status: "Status",
 		error : "Error",
 		message : "Employee detail has been sucessfully changed.",
-		errorMessage: "The same type of restriction is already defined"
+		errorMessage: "The same type of restriction is already defined",
+		titleRestr:"Add Restriction",
+		titleCred:"Add Credit",
+		info: "Info"
 	}
 });

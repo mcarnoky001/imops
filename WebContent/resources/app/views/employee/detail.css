@@ -105,6 +105,9 @@
 	padding: 0;
 	background-position: center center !important;
 }
+.claimDetail .detailBody{
+	margin-bottom:40px;
+}
 
 .claimDetail .screenTitleBackground .mblTabBar {
 	border: none;
