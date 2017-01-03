@@ -1,15 +1,13 @@
 define([
 	"dojo/_base/declare",
 	"../commonList/list",
-	"gjax/store/JsonRest",
-	"gjax/uri/Uri",
 	"app/resources/app/widgets/rql",
 	"./EmployeeItem",
 	"dojo/_base/lang",
 	"../../stores/imops",
 	"dojo/when",
 	"dojo/store/Memory"
-], function(declare, listController, JsonRest, Uri, rql, EmployeeItem, lang,imops,when,Memory) {
+], function(declare, listController, rql, EmployeeItem, lang,imops,when,Memory) {
 
 	return declare.safeMixin(lang.mixin({}, listController), {
 		store : null,

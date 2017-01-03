@@ -5,20 +5,29 @@ define([
 	"dojo/dom",
 	"xstyle/css!./home.css",
 	"dojox/mobile/Button"
-], function(TransitionEvent,connect,domStyle,dom) {
+], function(TransitionEvent, connect, domStyle, dom) {
 	return {
-	    	beforeActivate:function(previousView, data){
-	    	    if(this.params.accountType =="employer"){
-		    domStyle.set(this.createNewEmployer.domNode, "display", "none");
-		    new TransitionEvent(this.domNode, {
-			target : "header",
-			params : {
-			    accountType:this.params.accountType,
-			    companyID: this.params.companyID
+		beforeActivate : function(previousView, data) {
+			if (this.params.accountType != null) {
+				if (this.params.accountType == "employer") {
+					domStyle.set(this.createNewEmployer.domNode, "display", "none");
+				} else {
+					domStyle.set(this.createNewEmployer.domNode, "display", "block");
+				}
+				new TransitionEvent(this.domNode, {
+					target : "header",
+					params : {
+						accountType : this.params.accountType,
+						companyID : this.params.companyID
+					}
+				}).dispatch();
 			}
-		}).dispatch();
-	    	    }
-	    	},
+			else{
+				new TransitionEvent(this.domNode, {
+					target : "login"
+				}).dispatch();
+			}
+		},
 
 		createNewEmployer : function() {
 			new TransitionEvent(this.domNode, {
@@ -32,4 +41,3 @@ define([
 		}
 	};
 });
-	

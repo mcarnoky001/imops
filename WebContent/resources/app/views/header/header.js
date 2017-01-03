@@ -11,7 +11,6 @@ define([
 	"dojox/mobile/Button",
 	"dojo/request/registry",
 	"dojo/dom",
-	"gjax/encoders/html/encodeSmp",
 	"dojo/dom-attr",
 	"dojo/dom-geometry",
 	"dojox/mobile/Pane",
@@ -32,7 +31,7 @@ define([
 	"dojox/mobile/ScrollableView",
 	"app/libs/sidepane/SidePane",
 	"dojo/NodeList-dom"
-], function(i18n, query, array, domClass, throttle, on, lang, domConstruct, aspect, Button, request, dom,encHtml,// 
+], function(i18n, query, array, domClass, throttle, on, lang, domConstruct, aspect, Button, request, dom,// 
 domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, TransitionEvent) {
 
 	var SAVE_MESSAGE_DURATION = 4000;
@@ -45,17 +44,26 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, Trans
 			this.own(topic.subscribe("task-closed", lang.hitch(this, "loadTaskOverview")));
 			this.own(topic.subscribe("show-message", lang.hitch(this, "_showMessage")));
 			this.homeBtn.on("click", lang.hitch(this, "resetSideMenuHighlight"));
-			this.logoutBtn.on("click",lang.hitch(this,"setLogoutButton"));
+			this.logoutBtn.on("click", lang.hitch(this, "setLogoutButton"));
 		},
 		_resizeHandle : undefined,
 		beforeActivate : function(previousView, data) {
 			this._resizeHandle && this._resizeHandle.remove();
 			//this._resizeHandle = this.own(on(window, "resize", throttle(lang.hitch(this, this._recalculateMenu), 100)))[0];
-			if(this.params.accountType =="employer"){
-				domStyle.set(this.employerBtn.domNode, "display", "none");
-		    	    }
+			if (this.params.accountType != null) {
+				if (this.params.accountType == "employer") {
+					domStyle.set(this.employerBtn.domNode, "display", "none");
+				} else {
+					domStyle.set(this.employerBtn.domNode, "display", "block");
+				}
+			}
+			else{
+				new TransitionEvent(this.domNode, {
+					target : "login"
+				}).dispatch();
+			}
 		},
-		setLogoutButton:function(){
+		setLogoutButton : function() {
 			/*request(appConfig.auth.logoutSvc, {
 				method : "GET"
 			}).then(lang.hitch(this, function() {
@@ -207,13 +215,13 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, Trans
 
 			}
 		},
-		showEmployeeList: function(){
-		    new TransitionEvent(this.domNode, {
-			target : "employeeList",
-			params : {
-			    companyID:this.params.companyID
-			}
-		}).dispatch();
+		showEmployeeList : function() {
+			new TransitionEvent(this.domNode, {
+				target : "employeeList",
+				params : {
+					companyID : this.params.companyID
+				}
+			}).dispatch();
 		}
 	};
 });

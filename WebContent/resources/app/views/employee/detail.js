@@ -26,6 +26,7 @@ define([
 	"./creditChangePicker",
 	"./restrictionAddPicker",
 	"../restriction/RestrictionItem",
+	"../Log/logItem",
 	//
 	"xstyle/css!./detail.css",
 	"dojox/mvc/Output",
@@ -43,7 +44,7 @@ define([
 	"dojox/mobile/ComboBox",
 	"dijit/form/DataList"
 ], function(win, domConstruct, dom, Button, Uri, ModelRefController, string, lang, request, registry, error, topic, Memory, TransitionEvent, array, i18n,
-		i18nTT, SimpleDialog, JsonRest, uriBuilder, domStyle, Observable, imops, when, creditChangePicker, restrictionAddPicker, RestrictionItem) {
+		i18nTT, SimpleDialog, JsonRest, uriBuilder, domStyle, Observable, imops, when, creditChangePicker, restrictionAddPicker, RestrictionItem, LogItem) {
 
 	return {
 		init : function() {
@@ -96,6 +97,19 @@ define([
 			}
 			this.restrictionList.setStore(this.taskStore);
 		},
+		initLogPane : function(results) {
+			this.commentList.set("itemRenderer", LogItem);
+			this.taskStore = new Memory({
+				data : results.purchases,
+				idProperty : "id"
+			});
+			if (results.length <= 0) {
+				domStyle.set(dom.byId("dataNotFoundTas"), "display", "block");
+			} else {
+				domStyle.set(dom.byId("dataNotFoundTas"), "display", "none");
+			}
+			this.commentList.setStore(this.taskStore);
+		},
 		showRestrictionsTab : function() {
 			var general = this.generalPane.domNode;
 			var task = this.taskPane.domNode;
@@ -127,6 +141,7 @@ define([
 			when(imops.get(this.params.employeeID)).then((lang.hitch(this, function(result) {
 				this.controller.loadModelFromData(result);
 				this.initRestrictionPane(result);
+				this.initLogPane(result);
 			})).bind(this)).otherwise(error.errbackDialog);
 		},
 
@@ -205,7 +220,10 @@ define([
 		showConsultantPicker : function() {
 		},
 		removeEmployee : function() {
-
+			var data = this.controller.getPlainValue();
+			when(imops.remove(data)).then((lang.hitch(this, function(result) {
+				console.log("deleted");
+			})).bind(this)).otherwise(error.errbackDialog);
 		}
 	};
 });

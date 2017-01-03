@@ -1,14 +1,11 @@
 define([
-        "../../stores/imops",
+	"../../stores/imops",
 	"gjax/mvc/ModelRefController",
 	"dojo/_base/lang",
 	"dojo/string",
 	"dojo/request/registry",
-	"gjax/uri/Uri",
 	"dojo/store/Memory",
 	"gjax/error",
-	"gjax/store/JsonRest",
-	"gjax/dialog",
 	"dojo/i18n!./nls/messages",
 	"dojo/when",
 	"dojox/mobile/TransitionEvent",
@@ -17,8 +14,8 @@ define([
 	"dojox/mobile/TextBox",
 	"dojox/mobile/Button",
 	"xstyle/css!./newEmployee.css"
-], function(imops, ModelRefController, lang, string, request, Uri, Memory, error, JsonRest,// 
-dialog, i18n, when, TransitionEvent) {
+], function(imops, ModelRefController, lang, string, request, Memory, error,// 
+i18n, when, TransitionEvent) {
 
 	return {
 		init : function() {
@@ -31,9 +28,9 @@ dialog, i18n, when, TransitionEvent) {
 		beforeActivate : function() {
 			this.controller.reset();
 			this.controller.loadModelFromData({
-				name:null,
-				address:null,
-				type: "employee"
+				name : null,
+				address : null,
+				type : "employee"
 			});
 		},
 		_updateBtnDisabled : function() {
@@ -44,17 +41,14 @@ dialog, i18n, when, TransitionEvent) {
 			if (!this.employeeForm.validate()) {
 				return;
 			}
-			this.controller.set("restrictions",[]);
+			this.controller.set("restrictions", []);
 			var data = this.controller.getPlainValue();
-		        when(imops.add(data))
-		                .then((lang.hitch(this, function(updatedResult) {
-		                    this.controller.model._id = updatedResult._id;
-		                    this.controller.model._rev = updatedResult._rev;
-		                    this.showEmployee();
-		                })).bind(this))
-		                .otherwise(error.errbackDialog);
+			when(imops.add(data)).then((lang.hitch(this, function(updatedResult) {
+				this.controller.model._id = updatedResult._id;
+				this.controller.model._rev = updatedResult._rev;
+				this.showEmployee();
+			})).bind(this)).otherwise(error.errbackDialog);
 		},
-
 
 		showEmployee : function(claim) {
 			new TransitionEvent(this.domNode, {
