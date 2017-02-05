@@ -85,7 +85,6 @@ define([
 		            this.controller.set("_rev",result._rev);
 		            this._saveSuccess();
 		            this.restrCatCB.set("value","");
-		            this.restrStatusSw.set("value","");
 		        }))//
 			.otherwise(error.errbackDialog);
 			}
@@ -95,6 +94,7 @@ define([
 				type : "success",
 				message : this.nls.saveSuccessful
 			});
+			this.parent.beforeActivate();
 		},
 		_error : function(){
 			dialog.error(i18n.error, i18n.errorMessage).then(lang.hitch(this, function() {

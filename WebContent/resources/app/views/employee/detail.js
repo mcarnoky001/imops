@@ -184,12 +184,14 @@ define([
 		},
 		changeCredit : function() {
 			this._picker = new creditChangePicker();
+			this._picker.parent = this;
 			this._picker.startup(this.params.employeeID);
 			this._picker.show();
 			this.own(this._picker);
 		},
 		createRestriction : function() {
 			this._picker = new restrictionAddPicker();
+			this._picker.parent = this;
 			this._picker.startup(this.params.employeeID);
 			this._picker.show();
 			this.own(this._picker);

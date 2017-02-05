@@ -22,6 +22,7 @@ define([
 	"dojo/html",
 	"dijit/registry",
 	"dojox/mobile/TransitionEvent",
+	"gjax/encoders/html/encodeSmp",
 	//UI
 	"dojox/mobile/Heading",
 	"dojox/mobile/ToolBarButton",
@@ -32,7 +33,7 @@ define([
 	"app/libs/sidepane/SidePane",
 	"dojo/NodeList-dom"
 ], function(i18n, query, array, domClass, throttle, on, lang, domConstruct, aspect, Button, request, dom,// 
-domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, TransitionEvent) {
+domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, TransitionEvent, encHtml) {
 
 	var SAVE_MESSAGE_DURATION = 4000;
 

@@ -96,6 +96,7 @@ define([
 				type : "success",
 				message : this.nls.saveSuccessful
 			});
+			this.parent.beforeActivate();
 		}
 
 	});

@@ -7,8 +7,8 @@ define({
 		claims : "Claims",
 		tasks : "Tasks",
 		logout : "Logout",
-		employee: "Employee",
-		employer: "Employer",
+		employee: "Employee list",
+		employer: "Employer list",
 		button: "Empty Button"
 	}
 });
