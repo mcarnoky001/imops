@@ -24,7 +24,8 @@ define([
 
 		templateProps : [
 			"name",
-			"_id"
+			"_id",
+			"surname"
 		],
 
 		_setLabelAttr : function() {

@@ -65,11 +65,11 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, Trans
 			}
 		},
 		setLogoutButton : function() {
-			/*request(appConfig.auth.logoutSvc, {
-				method : "GET"
-			}).then(lang.hitch(this, function() {
-				window.location = appConfig.auth.loginScreen;
-			}));*/
+			this.deleteCookie("accountType");
+			this.deleteCookie("companyID");
+			new TransitionEvent(this.domNode, {
+				target : "login"
+			    }).dispatch();
 		},
 
 		beforeDeactivate : function() {
@@ -223,6 +223,9 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, Trans
 					companyID : this.params.companyID
 				}
 			}).dispatch();
-		}
+		},
+		deleteCookie:function(name) {
+		    document.cookie = name +'=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		  }
 	};
 });

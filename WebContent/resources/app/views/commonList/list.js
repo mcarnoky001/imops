@@ -20,10 +20,6 @@ define([
 			this.showAllBtn.on("click", lang.hitch(this, function() {
 				this.search(this.searchBox.get("value"), false);
 			}));
-
-			this.searchBox.on("change", debounce(lang.hitch(this, function(searchString) {
-				this.search(searchString, true);
-			}), SEARCH_DELAY));
 		},
 
 		beforeActivate : function() {

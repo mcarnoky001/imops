@@ -57,6 +57,7 @@ define({
 		amountToAdd: "Number of checks to add",
 		employeeID: "Employee ID",
 		actualCredit: "Actual Credit",
+		remove: "Remove",
 		removeEmployee: "Remove Employee",
 		checkType: "Check Type",
 		companyID:"Company ID",

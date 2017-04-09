@@ -169,6 +169,7 @@ define([
 
 		},
 		showRelatedDlg : function() {
+		    this.relatedDialog.show();
 		},
 		showActionsDlg : function() {
 			this.actionsDialog.show();
@@ -225,6 +226,7 @@ define([
 			var data = this.controller.getPlainValue();
 			when(imops.remove(data)).then((lang.hitch(this, function(result) {
 				console.log("deleted");
+				this.relatedDialog.hide();
 			})).bind(this)).otherwise(error.errbackDialog);
 		}
 	};

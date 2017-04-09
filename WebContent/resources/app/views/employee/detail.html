@@ -28,13 +28,6 @@
 				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','company')"></div>
 			</div>
 			<div>
-				<label>${nls.address}</label>
-				<div>
-					<input data-dojo-type="dojox/mobile/TextBox" data-dojo-props="value:at('rel:','address')" placeholder="${nls.address}" data-dojo-attach-point="addressTB"
-						required="required" />
-				</div>
-			</div>
-			<div>
 				<label>${nls.checkType}</label>
 				<select data-dojo-type="dijit/form/DataList"
   						data-dojo-props='id:"checkDataList"'>
@@ -81,7 +74,7 @@
 
 	<div class="footer">
 		<ul data-dojo-type="dojox/mobile/TabBar" data-dojo-props='barType:"tallTab", fill:"always"'>
-			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showRelatedDlg" data-dojo-attach-point="relatedBtn">${nls.related}</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showRelatedDlg" data-dojo-attach-point="relatedBtn">${nls.remove}</li>
 			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showActionsDlg" data-dojo-attach-point="actionsBtn">${nls.actions}</li>
 			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:saveClaim" data-dojo-attach-point="saveBtn">${nls.save}</li>
 		</ul>
