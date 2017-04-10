@@ -1,9 +1,15 @@
 <div class="home">
 	<img class="logoImage" src="images/imops-logo.png" />
-	<!--  -->
-<!-- 	<input data-dojo-attach-point="searchTB" data-dojo-type="dojox/mobile/TextArea" class="searchTB" /> -->
+
 	<div class="searchBtns">
-		<button class="actionButton" data-dojo-type="dojox/mobile/Button"  data-dojo-attach-point="createNewEmployer" class="searchBtn" data-dojo-attach-event="click:createNewEmployer">${nls.newEmployer}</button>
-		<button class="actionButton" data-dojo-type="dojox/mobile/Button"  data-dojo-attach-point="createNewEmployee" data-dojo-attach-event="click:createNewEmployee">${nls.newEmployee}</button>
+		<button type="button" class="actionButton"
+			data-dojo-type="dojox/mobile/Button"
+			data-dojo-attach-point="createNewEmployer"
+			data-dojo-props="onClick:this.createNewEmployer">${nls.newEmployer}</button>
+		<button type="button" class="actionButton"
+			data-dojo-type="dojox/mobile/Button"
+			data-dojo-attach-point="createNewEmployee"
+			data-dojo-props="onClick:this.createNewEmployee"
+			>${nls.newEmployee}</button>
 	</div>
 </div>

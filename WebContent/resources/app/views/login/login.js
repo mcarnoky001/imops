@@ -4,13 +4,15 @@ define([
 	"dojo/when",
 	"dojo/_base/lang",
 	"gjax/error",
+	"dojo/dom",
+	"dojo/dom-style",
 	"xstyle/css!./login.css",
 	"dojox/mobile/Button",
 	"dojox/mobile/TextBox"
-], function(TransitionEvent,imops,when,lang,error) {
+], function(TransitionEvent,imops,when,lang,error,dom,domStyle) {
 	return {
-	    
-	    	init: function(){
+	    	beforeActivate: function(){
+	    	domStyle.set(dom.byId("heading"), 'display', 'none');
 	    	    if(this.checkCookie()){
 	    		new TransitionEvent(this.domNode, {
 				target : "home",

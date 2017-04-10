@@ -41,6 +41,8 @@ define({
 		dataNotFound: "No data found",
 		addNew: "Add new",
 		save: "Save",
+		name: "Name",
+		surname: "Surname",
 		consultant : "Claim Consultant",
 		address: "Address",
 		companyName: "Company Name",
