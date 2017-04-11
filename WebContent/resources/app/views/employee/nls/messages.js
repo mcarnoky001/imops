@@ -9,6 +9,7 @@ define({
 		claimType : "Claim Type",
 		policyProduct : "Policy Type",
 		saveClaim : "Save",
+		email: "Email",
 		claimStatus : "Claim status",
 		saveSuccessful : "Save successful",
 		estimates : "Estimates (Amount/Recovery)",

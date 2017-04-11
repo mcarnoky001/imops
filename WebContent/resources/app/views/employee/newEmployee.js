@@ -1,5 +1,5 @@
 define([ "../../stores/imops", "gjax/mvc/ModelRefController",
-	"dojo/_base/lang", "dojo/string", "dojo/request/registry",
+	"dojo/_base/lang", "dojo/string", "dojo/request",
 	"dojo/store/Memory", "gjax/error", "dojo/i18n!./nls/messages",
 	"dojo/when", "dojox/mobile/TransitionEvent",
 	"../../widgets/verifyLoginSession", "dijit/form/Form",
@@ -33,8 +33,9 @@ define([ "../../stores/imops", "gjax/mvc/ModelRefController",
 		});
 		this.accountController.loadModelFromData({
 		    loginName : "",
-		    password : "abc123ABC",
+		    password : "",
 		    type : "account",
+		    email: "",
 		    accountType: "employee"
 		})
 	    } else {
@@ -52,6 +53,8 @@ define([ "../../stores/imops", "gjax/mvc/ModelRefController",
 		return;
 	    }
 	    this.accountController.set("loginName", this.surnameTB.get("value")+ (Math.floor(Math.random() * (999 - 100 + 1)) + 100).toString());
+	    this.accountController.set("password", (Math.floor(Math.random() * (99999999 - 10000000 + 1)) + 10000000).toString());
+	    this.accountController.set("email", this.emailTB.get("value"));
 	    var accountData = this.accountController.getPlainValue();
 	    when(imops.add(accountData)).then(
 		    (lang.hitch(this, function(updatedResult) {
@@ -63,6 +66,7 @@ define([ "../../stores/imops", "gjax/mvc/ModelRefController",
 				    (lang.hitch(this, function(updatedResult) {
 					this.controller.model._id = updatedResult._id;
 					this.controller.model._rev = updatedResult._rev;
+					this.sendEmail();
 					this.showEmployee();
 				    })).bind(this)).otherwise(error.errbackDialog);
 		    })).bind(this)).otherwise(error.errbackDialog);
@@ -76,7 +80,20 @@ define([ "../../stores/imops", "gjax/mvc/ModelRefController",
 		    employeeREV : this.controller.model._rev
 		}
 	    }).dispatch();
-	}
-
+	},
+	sendEmail : function(){
+		    request.post("http://192.168.100.4:8080/php/sendRegistrationEmail.php", {
+		        data: {
+		            email:this.accountController.model.get("email"),
+		            login:this.accountController.model.get("loginName"),
+		            pass:this.accountController.model.get("password")
+		        },
+		        headers: {
+		            'X-Requested-With': null
+		        }
+		    }).then(function(text){
+		        console.log("The server returned: ", text);
+		    });
+		}
     };
 });
