@@ -7,7 +7,7 @@ define([ "../../stores/imops", "gjax/mvc/ModelRefController",
 	"dojox/mobile/Button", "xstyle/css!./newEmployee.css" ], function(
 	imops, ModelRefController, lang, string, request, Memory, error,// 
 	i18n, when, TransitionEvent, LoginSession) {
-
+    var idCompany =null;
     return {
 	init : function() {
 	    this.controller = new ModelRefController();
@@ -19,12 +19,15 @@ define([ "../../stores/imops", "gjax/mvc/ModelRefController",
 
 	beforeActivate : function() {
 	    if (LoginSession.verify()) {
+		if(this.params.companyID != undefined){
+		    idCompany = this.params.companyID;
+		}
 		this.controller.reset();
 		this.controller.loadModelFromData({
 		    name : null,
 		    surname: null,
 		    type : "employee",
-		    company : this.params.companyID,
+		    company : idCompany,
 		    credit : "0",
 		    checkType : "4.00€",
 		    accountID : "",
@@ -61,6 +64,7 @@ define([ "../../stores/imops", "gjax/mvc/ModelRefController",
 			this.accountController.model._id = updatedResult._id;
 			this.accountController.model._rev = updatedResult._rev;
 			this.controller.set("accountID",updatedResult._id);
+			this.controller.set("company",idCompany);
 			var data = this.controller.getPlainValue();
 			    when(imops.add(data)).then(
 				    (lang.hitch(this, function(updatedResult) {

@@ -154,7 +154,7 @@ body .mblTabBarSlimTab .mblTabBarButton {
 	font-size: 16px;
 	font-weight: 600;
 	display: inline-flex;
-    max-width: 50%;
+    width: 50%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -163,6 +163,7 @@ body .mblTabBarSlimTab .mblTabBarButton {
 .mblListItem {
 	padding-top: 10px;
 	padding-bottom: 10px;
+	line-height: 25px !important;
 }
 
 .mblSimpleDialog {
@@ -209,6 +210,7 @@ body .mblTabBarSlimTab .mblTabBarButton {
 
 .secondRowFirst {
 	float: left;
+	width: 50%;
 }
 
 .footer {

@@ -64,6 +64,7 @@ define({
 		removeEmployee: "Remove Employee",
 		checkType: "Check Type",
 		companyID:"Company ID",
+		company: "Company",
 		restrictionCategory: "Restriction Category",
 		status: "Status",
 		error : "Error",

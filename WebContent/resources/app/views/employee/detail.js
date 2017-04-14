@@ -10,7 +10,7 @@ define(
 		"gjax/uri/builder", "dojo/dom-style", "dojo/store/Observable",
 		"../../stores/imops", "dojo/when", "./creditChangePicker",
 		"./restrictionAddPicker", "../restriction/RestrictionItem",
-		"../Log/logItem", "../../widgets/verifyLoginSession",
+		"../Log/logItem", "../../widgets/verifyLoginSession","../header/header",
 		//
 		"xstyle/css!./detail.css", "dojox/mvc/Output",
 		"dojox/mobile/LongListMixin", "dojox/mobile/FormLayout",
@@ -24,7 +24,7 @@ define(
 		registry, error, topic, Memory, TransitionEvent, array, i18n,
 		i18nTT, SimpleDialog, JsonRest, uriBuilder, domStyle,
 		Observable, imops, when, creditChangePicker,
-		restrictionAddPicker, RestrictionItem, LogItem, LoginSession) {
+		restrictionAddPicker, RestrictionItem, LogItem, LoginSession,header) {
 
 	    return {
 		init : function() {
@@ -131,6 +131,10 @@ define(
 			when(imops.get(this.params.employeeID)).then(
 				(lang.hitch(this, function(result) {
 				    this.controller.loadModelFromData(result);
+				    when(imops.get(this.controller.get("company"))).then(
+						(lang.hitch(this, function(result) {
+						    this.companyTB.set("value",result.name);
+						})).bind(this)).otherwise(error.errbackDialog);
 				    this.initRestrictionPane(result);
 				    this.initLogPane(result);
 				})).bind(this)).otherwise(error.errbackDialog);
@@ -186,6 +190,7 @@ define(
 		    this._picker.parent = this;
 		    this._picker.startup(this.params.employeeID);
 		    this._picker.show();
+		    this.actionsDialog.hide();
 		    this.own(this._picker);
 		},
 		createRestriction : function() {
@@ -193,6 +198,7 @@ define(
 		    this._picker.parent = this;
 		    this._picker.startup(this.params.employeeID);
 		    this._picker.show();
+		    this.actionsDialog.hide();
 		    this.own(this._picker);
 		},
 
@@ -226,6 +232,12 @@ define(
 			    (lang.hitch(this, function(result) {
 				console.log("deleted");
 				this.relatedDialog.hide();
+				new TransitionEvent(this.domNode, {
+					target : "employeeList",
+					params : {
+						companyID : this.controller.get("company")
+					}
+				}).dispatch();
 			    })).bind(this)).otherwise(error.errbackDialog);
 		}
 	    };

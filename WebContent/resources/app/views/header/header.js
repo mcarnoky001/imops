@@ -36,7 +36,7 @@ define([
 domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, TransitionEvent, encHtml) {
 
 	var SAVE_MESSAGE_DURATION = 4000;
-
+	var idCompany = null;
 	return {
 		_fullyVisibleMenu : true,
 
@@ -51,6 +51,9 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, Trans
 		beforeActivate : function(previousView, data) {
 			this._resizeHandle && this._resizeHandle.remove();
 			//this._resizeHandle = this.own(on(window, "resize", throttle(lang.hitch(this, this._recalculateMenu), 100)))[0];
+			if(this.params.companyID != undefined){
+				   idCompany = this.params.companyID;
+			    }
 			if (this.params.accountType != null) {
 				if (this.params.accountType == "employer") {
 					domStyle.set(this.employerBtn.domNode, "display", "none");
@@ -220,7 +223,7 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, Trans
 			new TransitionEvent(this.domNode, {
 				target : "employeeList",
 				params : {
-					companyID : this.params.companyID
+					companyID : idCompany
 				}
 			}).dispatch();
 		},
