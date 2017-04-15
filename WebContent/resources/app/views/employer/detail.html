@@ -5,7 +5,6 @@
 			<ul data-dojo-type="dojox/mobile/TabBar" data-dojo-props='barType:"segmentedControl",  fixed:"top"'>
 				<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showGeneralTab" data-dojo-props='selected:true'>${nls.general}</li>
 				<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showTaskTab">${nls.employees}</li>
-				<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showCommentsTab">${nls.logs}</li>
 			</ul>
 		</div>
 		<div class="detailBody" data-dojo-attach-point="generalPane" data-dojo-type="dojox/mobile/FormLayout" data-dojo-props="columns:'single'">
@@ -14,11 +13,27 @@
 				<div data-dojo-type="dojox/mvc/Output" data-dojo-props="value:at('rel:','name')"></div>
 			</div>
 			<div>
+				<label>${nls.companyID}</label>
+				<div>
+					<input data-dojo-type="dojox/mobile/TextBox"
+						data-dojo-props="value:at('rel:','companyID'), disabled:true" placeholder="${nls.companyID}"
+						data-dojo-attach-point="companyIDTB" required="required" />
+				</div>
+			</div>
+			<div>
 				<label>${nls.address}</label>
 				<div>
 					<input data-dojo-type="dojox/mobile/TextBox"
 						data-dojo-props="value:at('rel:','address')" placeholder="${nls.address}"
-						data-dojo-attach-point="addressTB" required="required" />
+						data-dojo-attach-point="addressTB" required="required"/>
+				</div>
+			</div>
+			<div>
+				<label>${nls.email}</label>
+				<div>
+					<input data-dojo-type="dojox/mobile/TextBox"
+						data-dojo-props="value:at('rel:','email')" placeholder="${nls.email}"
+						data-dojo-attach-point="emailTB" required="required" />
 				</div>
 			</div>
 		</div>
@@ -33,47 +48,14 @@
 		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="showAllBtn" data-dojo-props="hidden:true" class="showAllBtn"
 			style="width: 100%; box-sizing: border-box;">${nls.showAll}</button>
 	</div>
-	<div class="pane" data-dojo-type="dojox/mobile/ScrollablePane" data-dojo-attach-point="commentPane">
-		<div>
-			<span id="dataNotFoundCom" class="dataNotFound" style="display: none">${nls.dataNotFound}</span>
-		</div>
-		<div class="detailBody" data-dojo-attach-point="commentList" data-dojo-type="dojox/mobile/EdgeToEdgeStoreList" data-dojo-mixins="dojox/mobile/LongListMixin"
-			data-dojo-props="labelProperty:'code'"></div>
-		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="showAllBtn" data-dojo-props="hidden:true" class="showAllBtn"
-			style="width: 100%; box-sizing: border-box;">${nls.showAll}</button>
-		<div class="HorizontalFooter">
-			<button type="button" data-dojo-type="dojox/mobile/Button" class="iconButton" data-dojo-attach-point="addDoc" data-dojo-attach-event="click:showNewComment" data-dojo-props="disabled:false">${nls.addNew}</button>
-			<button type="button" data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="saveCommentBtn" data-dojo-attach-event="click:saveComment" data-dojo-props="disabled:true">${nls.save}</button>
-		</div>
-		<div id="newComment" class="detailBody" style="display:none">
-			<div class="newComment">
-				<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="addCommentBtn" data-dojo-attach-event="click:addComment"></button>
-				<div class="bottomTextArea">
-					<textarea class="commentTextArea" data-dojo-type="dojox/mobile/TextArea" data-dojo-attach-point="newCommentTA"></textarea>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div class="footer">
 		<ul data-dojo-type="dojox/mobile/TabBar" data-dojo-props='barType:"tallTab", fill:"always"'>
-			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showRelatedDlg" data-dojo-attach-point="relatedBtn">${nls.related}</li>
-			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showActionsDlg" data-dojo-attach-point="actionsBtn">${nls.actions}</li>
-			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:saveClaim" data-dojo-attach-point="saveBtn">${nls.saveClaim}</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:showRelatedDlg" data-dojo-attach-point="relatedBtn">${nls.remove}</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton" data-dojo-attach-event="click:saveEmployer" data-dojo-attach-point="saveBtn">${nls.save}</li>
 		</ul>
 	</div>
 	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="relatedDialog" class="functionsDialog" data-dojo-props="closeButton:true">
-		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-point="documentsBtn">${nls.documents}</button>
-	</div>
-	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="actionsDialog" class="functionsDialog" data-dojo-props="closeButton:true">
-		<button data-dojo-type="dojox/mobile/Button"  data-dojo-attach-point="changeStatusBtn">${nls.changeStatus}</button>
-		<button data-dojo-type="dojox/mobile/Button"  data-dojo-attach-point="showFunctionsBtn">${nls.functions}</button>
-	</div>
-	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="changeStatusDialog" class="changeStatusDialog" data-dojo-props="closeButton:true">
-	</div>
-	<div data-dojo-type="dojox/mobile/SimpleDialog" data-dojo-attach-point="functionsDialog" class="functionsDialog" data-dojo-props="closeButton:true">
-		<button data-dojo-type="dojox/mobile/Button" >${nls.createTask}</button>
-		<button data-dojo-type="dojox/mobile/Button" >${nls.duplicateClaim}</button>
-		<button data-dojo-type="dojox/mobile/Button">${nls.changePolicy}</button>
+		<button data-dojo-type="dojox/mobile/Button" data-dojo-attach-event="click:removeEmployer" data-dojo-attach-point="removeEmployerBtn">${nls.removeEmployer}</button>
 	</div>
 </div>

@@ -7,3 +7,9 @@
 	margin-top: 40%;
 	margin-bottom : 0px;
 }
+.dateExpirationPicker{
+	background: #F2F5FA !important;
+}
+.dateExpirationPicker .mblSimpleDialogTitle {
+    width: 270px !important;
+}

@@ -26,7 +26,6 @@ define([ "dojo/_base/window", "dojo/dom-construct", "dojo/dom",
 	    this.controller.bind(this.employerForm);
 	    this.own(this.controller);
 	    this.own(this.taskPane);
-	    this.own(this.commentPane);
 
 	    this.controller.watch("dirty", lang.hitch(this, function(prop,
 		    oldValue, newValue) {
@@ -49,32 +48,6 @@ define([ "dojo/_base/window", "dojo/dom-construct", "dojo/dom",
 	},
 	initTaskPane : function(results) {
 
-	},
-	showTaskTab : function() {
-	    var general = dom.byId("general");
-	    var task = dom.byId("tasks");
-	    var comment = dom.byId("comment");
-	    domStyle.set(general, "display", "none");
-	    domStyle.set(task, "display", "block");
-	    domStyle.set(comment, "display", "none");
-	    this.taskPane.resize();
-	},
-	showRestrictionTab : function() {
-	    var general = dom.byId("general");
-	    var task = dom.byId("tasks");
-	    var comment = dom.byId("comment");
-	    domStyle.set(general, "display", "block");
-	    domStyle.set(task, "display", "none");
-	    domStyle.set(comment, "display", "none");
-	},
-	showLogsTab : function() {
-	    var general = dom.byId("general");
-	    var task = dom.byId("tasks");
-	    var comment = dom.byId("comment");
-	    domStyle.set(general, "display", "none");
-	    domStyle.set(task, "display", "none");
-	    domStyle.set(comment, "display", "block");
-	    this.commentPane.resize();
 	},
 
 	beforeActivate : function() {
@@ -108,8 +81,8 @@ define([ "dojo/_base/window", "dojo/dom-construct", "dojo/dom",
 	    this.taskList.setStore(this.taskStore);
 	},
 
-	saveClaim : function() {
-	    if (!this.employeeForm.validate()) {
+	saveEmployer : function() {
+	    if (!this.employerForm.validate()) {
 		return;
 	    }
 	    var data = this.controller.getPlainValue();
@@ -118,6 +91,17 @@ define([ "dojo/_base/window", "dojo/dom-construct", "dojo/dom",
 		this._saveSuccess();
 	    }))//
 	    .otherwise(error.errbackDialog);
+	},
+	removeEmployer : function() {
+	    var data = this.controller.getPlainValue();
+	    when(imops.remove(data)).then(
+		    (lang.hitch(this, function(result) {
+			console.log("deleted");
+			this.relatedDialog.hide();
+			new TransitionEvent(this.domNode, {
+				target : "employerList",
+			}).dispatch();
+		    })).bind(this)).otherwise(error.errbackDialog);
 	},
 
 	_saveSuccess : function() {
@@ -130,47 +114,18 @@ define([ "dojo/_base/window", "dojo/dom-construct", "dojo/dom",
 	showRelatedDlg : function() {
 	    this.relatedDialog.show();
 	},
-	showActionsDlg : function() {
-	    this.actionsDialog.show();
-	},
-	removeEmployee : function() {
-	},
-	createRestriction : function() {
-	    this.actionsDialog.hide();
-	    new TransitionEvent(this.domNode, {
-		target : "newRestriction",
-		params : {
-		    employeeID : this.controller.get("_id")
-		}
-	    }).dispatch();
-	},
-	changeCredit : function() {
-	},
 	showTaskTab : function() {
 	    var general = this.generalPane.domNode;
 	    var task = this.taskPane.domNode;
-	    var comment = this.commentPane.domNode;
 	    domStyle.set(general, "display", "none");
 	    domStyle.set(task, "display", "block");
-	    domStyle.set(comment, "display", "none");
 	    this.taskPane.resize();
 	},
 	showGeneralTab : function() {
 	    var general = this.generalPane.domNode;
 	    var task = this.taskPane.domNode;
-	    var comment = this.commentPane.domNode;
 	    domStyle.set(general, "display", "block");
 	    domStyle.set(task, "display", "none");
-	    domStyle.set(comment, "display", "none");
-	},
-	showCommentsTab : function() {
-	    var general = this.generalPane.domNode;
-	    var task = this.taskPane.domNode;
-	    var comment = this.commentPane.domNode;
-	    domStyle.set(general, "display", "none");
-	    domStyle.set(task, "display", "none");
-	    domStyle.set(comment, "display", "block");
-	    this.commentPane.resize();
 	}
     };
 });

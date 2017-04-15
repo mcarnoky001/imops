@@ -191,7 +191,9 @@ define(
 		    this._picker.startup(this.params.employeeID);
 		    this._picker.show();
 		    this.actionsDialog.hide();
-		    this.own(this._picker);
+		    this._picker.connect(this._picker, "hide", lang.hitch(this,function(e){
+			    this._picker.destroyRecursive(); 
+			}));
 		},
 		createRestriction : function() {
 		    this._picker = new restrictionAddPicker();
@@ -199,7 +201,9 @@ define(
 		    this._picker.startup(this.params.employeeID);
 		    this._picker.show();
 		    this.actionsDialog.hide();
-		    this.own(this._picker);
+		    this._picker.connect(this._picker, "hide", lang.hitch(this,function(e){
+			this._picker.destroyRecursive(); 
+		    }));
 		},
 
 		showChangeStatusDlg : function() {

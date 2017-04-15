@@ -16,11 +16,15 @@ define([ "dojox/mobile/TransitionEvent", "dojo/_base/connect",
 	    if (LoginSession.verify()) {
 		if (this.params.accountType != null) {
 		    if (this.params.accountType == "employer") {
-			domStyle.set(this.createNewEmployerBtn.domNode, "display",
-				"none");
+			domStyle.set(this.createNewEmployerBtn.domNode, 'visibility',
+				'hidden');
+			domStyle.set(this.createNewEmployeeBtn.domNode, 'visibility',
+			'visible');
 		    } else if (this.params.accountType == "administrator") {
-			domStyle.set(this.createNewEmployerBtn.domNode, "display",
-				"block");
+			domStyle.set(this.createNewEmployerBtn.domNode, 'visibility',
+				'visible');
+			domStyle.set(this.createNewEmployeeBtn.domNode, 'visibility',
+			'hidden');
 		    }
 		    new TransitionEvent(this.domNode, {
 			target : "header",

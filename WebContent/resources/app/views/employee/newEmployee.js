@@ -86,7 +86,7 @@ define([ "../../stores/imops", "gjax/mvc/ModelRefController",
 	    }).dispatch();
 	},
 	sendEmail : function(){
-		    request.post("http://192.168.100.4:8080/php/sendRegistrationEmail.php", {
+		    request.post("http://127.0.0.1:8080/php/sendRegistrationEmail.php", {
 		        data: {
 		            email:this.accountController.model.get("email"),
 		            login:this.accountController.model.get("loginName"),

@@ -46,6 +46,7 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, Trans
 			this.own(topic.subscribe("show-message", lang.hitch(this, "_showMessage")));
 			this.homeBtn.on("click", lang.hitch(this, "resetSideMenuHighlight"));
 			this.logoutBtn.on("click", lang.hitch(this, "setLogoutButton"));
+			//this.own(this);
 		},
 		_resizeHandle : undefined,
 		beforeActivate : function(previousView, data) {
@@ -56,12 +57,19 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, Trans
 			    }
 			if (this.params.accountType != null) {
 				if (this.params.accountType == "employer") {
-					domStyle.set(this.employerBtn.domNode, "display", "none");
+					domStyle.set(this.employeeBtn.domNode, 'visibility',
+					'visible');
+					domStyle.set(this.employerBtn.domNode, 'visibility',
+					'hidden');
 				} else {
-					domStyle.set(this.employerBtn.domNode, "display", "block");
+				    domStyle.set(this.employeeBtn.domNode, 'visibility',
+					'hidden');
+					domStyle.set(this.employerBtn.domNode, 'visibility',
+					'visible');
 				}
 			}
 			else{
+			    	this.destroy();
 				new TransitionEvent(this.domNode, {
 					target : "login"
 				}).dispatch();
@@ -70,6 +78,7 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, Trans
 		setLogoutButton : function() {
 			this.deleteCookie("accountType");
 			this.deleteCookie("companyID");
+			this.destroy();
 			new TransitionEvent(this.domNode, {
 				target : "login"
 			    }).dispatch();

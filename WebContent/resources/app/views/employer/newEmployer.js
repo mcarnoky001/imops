@@ -25,7 +25,12 @@ define([ "../../stores/imops", "gjax/mvc/ModelRefController",
 		this.controller.loadModelFromData({
 		    name : null,
 		    address : null,
-		    type : "company"
+		    email: null,
+		    loginName: null,
+		    companyID:null,
+		    password: null,
+		    type : "account",
+		    accountType: "employer"
 		});
 	    } else {
 		new TransitionEvent(this.domNode, {
@@ -37,17 +42,25 @@ define([ "../../stores/imops", "gjax/mvc/ModelRefController",
 	    this.createBtn.set("disabled", !this.employerForm.isValid());
 	},
 
-	createClaim : function() {
+	createEmployer : function() {
 	    if (!this.employerForm.validate()) {
 		return;
 	    }
-
+	    this.controller.set("loginName", this.nameTB.get("value")+ (Math.floor(Math.random() * (999 - 100 + 1)) + 100).toString());
+	    this.controller.set("password", (Math.floor(Math.random() * (99999999 - 10000000 + 1)) + 10000000).toString());
 	    var data = this.controller.getPlainValue();
 	    when(imops.add(data)).then(
 		    (lang.hitch(this, function(updatedResult) {
 			this.controller.model._id = updatedResult._id;
 			this.controller.model._rev = updatedResult._rev;
-			this.showEmployer();
+			this.controller.set("companyID", updatedResult._id);
+			var data2 = this.controller.getPlainValue();
+			when(imops.add(data2)).then(
+				    (lang.hitch(this, function(updatedResult) {
+					this.controller.model._rev = updatedResult._rev;
+					this.sendEmail();
+					this.showEmployer();
+				    })).bind(this)).otherwise(error.errbackDialog);
 		    })).bind(this)).otherwise(error.errbackDialog);
 	},
 
@@ -55,10 +68,24 @@ define([ "../../stores/imops", "gjax/mvc/ModelRefController",
 	    new TransitionEvent(this.domNode, {
 		target : "employerDetail",
 		params : {
-		    employerID : this.controller.model._id,
-		    employerREV : this.controller.model._rev
+		    employerID : this.controller.get("_id"),
+		    employerREV : this.controller.get("_rev")
 		}
 	    }).dispatch();
+	},
+	sendEmail : function(){
+	    request.post("http://127.0.0.1:8080/php/sendRegistrationEmail.php", {
+	        data: {
+	            email:this.controller.model.get("email"),
+	            login:this.controller.model.get("loginName"),
+	            pass:this.controller.model.get("password")
+	        },
+	        headers: {
+	            'X-Requested-With': null
+	        }
+	    }).then(function(text){
+	        console.log("The server returned: ", text);
+	    });
 	}
 
     };

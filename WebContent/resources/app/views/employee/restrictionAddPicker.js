@@ -20,6 +20,7 @@ define([
 	"gjax/tdi",
 	"../../stores/imops",
 	"gjax/mvc/ModelRefController",
+	"dojo/dom",
 //
 	"dojox/mobile/TextBox",
 	"dojox/mobile/Switch",
@@ -30,7 +31,7 @@ define([
 	"dojox/form/DateTextBox",
 	"dijit/form/Form",
 	"xstyle/css!./restrictionAddPicker.css"
-], function(declare, SimpleDialog, _TemplatedMixin, _WidgetsInTemplateMixin, template,i18n, Memory, lang, debounce, error, topic,when, whitelistMixin,uriBuilder,Uri,string, request,dialog,tdi, imops ,ModelRefController) {
+], function(declare, SimpleDialog, _TemplatedMixin, _WidgetsInTemplateMixin, template,i18n, Memory, lang, debounce, error, topic,when, whitelistMixin,uriBuilder,Uri,string, request,dialog,tdi, imops ,ModelRefController,dom) {
 
 	return declare([
 		SimpleDialog,
@@ -52,8 +53,10 @@ define([
 			if (this._started) {
 				return;
 			}
+			
 			this.employeeID = employeeID;
 			this.inherited(arguments);
+			this.own(this.dataList);
 		},
 		getData : function() {
 			this.controller = new ModelRefController();

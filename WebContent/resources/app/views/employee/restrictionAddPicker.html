@@ -5,7 +5,8 @@
 			<div>
 				<label>${nls.restrictionCategory}</label>
 				<select data-dojo-type="dijit/form/DataList"
-  						data-dojo-props='id:"checkDataList2"'>
+						data-dojo-props="id:'dataList'"
+						data-dojo-attach-point="dataList">
       					<option>Alcohol</option>
 						<option>Tabacco</option>
 						<option>Chemists</option>
@@ -17,7 +18,7 @@
 						<option>Fuel</option>
 				</select>
 				<div>
-					<input data-dojo-type="dojox/mobile/ComboBox" required="true"  data-dojo-attach-point="restrCatCB" data-dojo-props="list:'checkDataList2'">
+					<input data-dojo-type="dojox/mobile/ComboBox" required="true"  data-dojo-attach-point="restrCatCB" data-dojo-props="list:'dataList'">
 				</div>
 			</div>
 		</div>
