@@ -231,18 +231,24 @@ define(
 		showConsultantPicker : function() {
 		},
 		removeEmployee : function() {
-		    var data = this.controller.getPlainValue();
-		    when(imops.remove(data)).then(
-			    (lang.hitch(this, function(result) {
-				console.log("deleted");
-				this.relatedDialog.hide();
-				new TransitionEvent(this.domNode, {
-					target : "employeeList",
-					params : {
-						companyID : this.controller.get("company")
-					}
-				}).dispatch();
-			    })).bind(this)).otherwise(error.errbackDialog);
+		    when(imops.get(this.controller.get("accountID"))).then(
+				(lang.hitch(this, function(result) {
+				    when(imops.remove(result)).then(
+					    (lang.hitch(this, function(result) {
+						var data = this.controller.getPlainValue();
+						    when(imops.remove(data)).then(
+							    (lang.hitch(this, function(result) {
+								console.log("deleted");
+								this.relatedDialog.hide();
+								new TransitionEvent(this.domNode, {
+									target : "employeeList",
+									params : {
+										companyID : this.controller.get("company")
+									}
+								}).dispatch();
+							    })).bind(this)).otherwise(error.errbackDialog);
+					    })).bind(this)).otherwise(error.errbackDialog);
+				})).bind(this)).otherwise(error.errbackDialog);
 		}
 	    };
 	});
