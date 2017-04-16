@@ -7,6 +7,7 @@ define([ "dojox/mobile/TransitionEvent", "dojo/_base/connect",
 	init:function(){
 	    on(this.createNewEmployeeBtn, "click", this.createNewEmployee);
 	    on(this.createNewEmployerBtn, "click", this.createNewEmployer);
+	    on(this.createNewCashierBtn, "click", this.createNewCashier);
 	},
 	beforeActivate : function() {
 	    if(this.params.companyID != undefined){
@@ -20,11 +21,15 @@ define([ "dojox/mobile/TransitionEvent", "dojo/_base/connect",
 				'hidden');
 			domStyle.set(this.createNewEmployeeBtn.domNode, 'visibility',
 			'visible');
+			domStyle.set(this.createNewCashierBtn.domNode, 'visibility',
+			'hidden');
 		    } else if (this.params.accountType == "administrator") {
 			domStyle.set(this.createNewEmployerBtn.domNode, 'visibility',
 				'visible');
 			domStyle.set(this.createNewEmployeeBtn.domNode, 'visibility',
 			'hidden');
+			domStyle.set(this.createNewCashierBtn.domNode, 'visibility',
+			'visible');
 		    }
 		    new TransitionEvent(this.domNode, {
 			target : "header",
@@ -51,6 +56,11 @@ define([ "dojox/mobile/TransitionEvent", "dojo/_base/connect",
 		params : {
 			companyID : idCompany
 		}
+	    }).dispatch();
+	},
+	createNewCashier : function() {
+	    new TransitionEvent(this.domNode, {
+		target : "newCashier",
 	    }).dispatch();
 	}
     };

@@ -66,8 +66,12 @@
             "controller": "app/resources/app/views/restriction/newRestriction",
             "template": "app/resources/app/views/restriction/newRestriction.html",
             "nls" : "app/resources/app/views/restriction/nls/messages"
+        },
+        "newCashier": {
+            "controller": "app/resources/app/views/cashier/newCashier",
+            "template": "app/resources/app/views/cashier/newCashier.html",
+            "nls" : "app/resources/app/views/cashier/nls/messages"
         }
-        
         
     }
 }

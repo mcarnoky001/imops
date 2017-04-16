@@ -42,8 +42,8 @@ domAttr, domGeom, Pane, error, domStyle, Badge, topic, fx, html, registry, Trans
 
 		init : function() {
 			this.setEventDelegators();
-			this.own(topic.subscribe("task-closed", lang.hitch(this, "loadTaskOverview")));
-			this.own(topic.subscribe("show-message", lang.hitch(this, "_showMessage")));
+			topic.subscribe("task-closed", lang.hitch(this, "loadTaskOverview"));
+			topic.subscribe("show-message", lang.hitch(this, "_showMessage"));
 			this.homeBtn.on("click", lang.hitch(this, "resetSideMenuHighlight"));
 			this.logoutBtn.on("click", lang.hitch(this, "setLogoutButton"));
 			//this.own(this);
