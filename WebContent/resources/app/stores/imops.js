@@ -36,8 +36,7 @@ define([
         },
         getCompanyEmployees : function(item){
             return this.db.query('company/employee', {
-        	startkey: [item,1],
-        	endkey: [item,1]
+        	key:item
             }).then(function(response) {
                 return response.rows.map(function(item) {
                     return item.value;
