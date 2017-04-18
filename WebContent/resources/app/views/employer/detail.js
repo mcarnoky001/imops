@@ -56,6 +56,7 @@ define([ "dojo/_base/window", "dojo/dom-construct", "dojo/dom",
 			(lang.hitch(this, function(result) {
 			    this.controller.loadModelFromData(result);
 			})).bind(this)).otherwise(error.errbackDialog);
+		this.loadData();
 	    } else {
 		this.destroy();
 		new TransitionEvent(this.domNode, {
