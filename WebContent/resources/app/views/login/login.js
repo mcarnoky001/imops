@@ -6,10 +6,15 @@ define([
 	"gjax/error",
 	"dojo/dom",
 	"dojo/dom-style",
+	"dojo/topic",
+	"dojo/_base/fx",
+	"dojo/html",
+	"gjax/encoders/html/encodeSmp",
 	"xstyle/css!./login.css",
 	"dojox/mobile/Button",
 	"dojox/mobile/TextBox"
-], function(TransitionEvent,imops,when,lang,error,dom,domStyle) {
+], function(TransitionEvent,imops,when,lang,error,dom,domStyle,topic,fx,html,encHtml) {
+    var SAVE_MESSAGE_DURATION = 4000;
 	return {
 	    	beforeActivate: function(){
 	    	domStyle.set(dom.byId("heading"), 'display', 'none');
@@ -25,7 +30,6 @@ define([
 	    	},
 		login : function() {
 			 when(imops.login(this.nameTB.get("value"),this.passTB.get("value"))).then(lang.hitch(this, function(result){
-			     this.setCookie(result);
 		            this.success(result);
 		            
 		        }))//
@@ -33,6 +37,7 @@ define([
 		},
 		success : function(result) {
 			if(result.length > 0){
+			    this.setCookie(result);
 			    new TransitionEvent(this.domNode, {
 				target : "home",
 				params : {
@@ -42,7 +47,7 @@ define([
 			    }).dispatch();
 			}
 			else{
-				error.errbackDialog;
+				this._loginFail();
 			}
 		},
 		setCookie : function(result) {
@@ -78,6 +83,19 @@ define([
 		        }
 		    }
 		    return "";
+		},
+		_loginFail : function() {
+
+			html.set(this.successMessage, encHtml(this.nls.fail));
+			fx.fadeIn({
+				node : this.successMessage,
+				duration : 100
+			}).play();
+			setTimeout(lang.hitch(this, function() {
+				fx.fadeOut({
+					node : this.successMessage
+				}).play();
+			}), SAVE_MESSAGE_DURATION);
 		}
 	};
 });

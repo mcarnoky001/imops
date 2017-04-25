@@ -192,7 +192,7 @@ define([
     }
 
     var db = new PouchDB("imops");
-    var remoteCouch = "http://localhost:5984/imops";
+    var remoteCouch = "http://147.175.146.128:5984/imops";
     sync(db, remoteCouch);
 
     return new PouchStore({

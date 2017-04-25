@@ -4,6 +4,7 @@ define({
 		newEmployee : "Create New Employee",
 		login: "Login",
 		username: "Username",
-		password: "Password"
+		password: "Password",
+		fail: "Login failed, bad credentials"
 	}
 });
