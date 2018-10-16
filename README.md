@@ -9,11 +9,11 @@ IMOPS (Ingenious Meal Oriented Paying System).
 
 ## Preview
 
-![Image of preview1](preview1.PNG)
+![Image of preview1](preview1.png)
 
-![Image of preview2](preview2.PNG)
+![Image of preview2](preview2.png)
 
-![Image of preview2](preview3.PNG)
+![Image of preview2](preview3.png)
 
 ### How do I get set up? ###
 
