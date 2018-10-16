@@ -7,6 +7,14 @@ IMOPS (Ingenious Meal Oriented Paying System).
 * Diploma thesis on FIIT STU. Purpose of this project is to transform already used paper meal vouchers to electronic ones. There is an ability to limit or filter the bought stuff by category at payind.
 * v 1.0
 
+## Preview
+
+![Image of preview1](preview1.PNG)
+
+![Image of preview2](preview2.PNG)
+
+![Image of preview2](preview3.PNG)
+
 ### How do I get set up? ###
 
 * Summary of set up
